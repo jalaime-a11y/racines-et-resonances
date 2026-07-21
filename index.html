@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Racines et Résonances — Sandrine</title>
+<meta name="description" content="Pratiques chamaniques et sonores avec Sandrine — bains sonores, soins énergétiques, tambour, bols tibétains. Sud-Essonne, Dourdan.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,400;1,9..144,200;1,9..144,400&family=Karla:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root{
+  --blanc:  #FDFAF5;
+  --lin:    #F3EDE2;
+  --encre:  #1A1510;
+  --gris:   #6A5E50;
+
+  --eau:    #1A6070;   /* teal profond */
+  --eau-p:  #EBF5F7;
+  --eau-m:  #9ECDD8;
+
+  --feu:    #AE3608;   /* brique sombre */
+  --feu-p:  #FBF0EB;
+  --feu-m:  #E8956E;
+
+  --terre:  #634019;   /* terre profonde */
+  --terre-p:#F2E9E0;
+  --terre-m:#C4956A;
+
+  --res:    #8E6612;   /* or mat */
+  --res-p:  #FAF3E2;
+  --res-m:  #D4A840;
+
+  --bord:   rgba(26,21,16,.1);
+}
+
+/* ─── BASE ───────────────────────────────────────────── */
+html{scroll-behavior:smooth}
+body{background:var(--blanc);color:var(--encre);font-family:'Karla',sans-serif;font-weight:300;line-height:1.75;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:200;line-height:1.15;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,5.5vw,5rem)}
+h2{font-size:clamp(1.7rem,3vw,2.8rem)}
+h3{font-size:clamp(1.05rem,1.8vw,1.4rem)}
+p{font-size:clamp(.92rem,1.35vw,1.02rem);color:var(--gris)}
+strong{font-weight:400;color:var(--encre)}
+em{font-style:italic}
+
+.mono{font-family:'IBM Plex Mono',monospace;font-weight:300;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase}
+.display-q{font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:clamp(1.05rem,1.8vw,1.38rem);line-height:1.6;color:var(--encre)}
+
+/* ─── NAV ────────────────────────────────────────────── */
+nav{position:fixed;inset:0 0 auto 0;z-index:300;padding:.9rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(253,250,245,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--bord)}
+.logo{font-family:'Fraunces',serif;font-weight:200;font-size:1.1rem;cursor:pointer;letter-spacing:.01em;color:var(--encre)}
+.logo span{color:var(--eau);font-style:italic}
+.nav-links{list-style:none;display:flex;gap:2rem}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gris);text-decoration:none;cursor:pointer;transition:color .2s}
+.nav-links a:hover{color:var(--eau)}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;z-index:301;padding:4px}
+.burger span{width:22px;height:1px;background:var(--encre);display:block;transition:all .25s}
+
+/* ─── PAGES ──────────────────────────────────────────── */
+.page{display:none}
+.page.active{display:block}
+
+/* ─── BOUTONS ────────────────────────────────────────── */
+.btn{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:.8rem 1.9rem;border:none;border-radius:2px;cursor:pointer;transition:all .25s;text-decoration:none;line-height:1}
+.btn-dark{background:var(--encre);color:var(--blanc)}
+.btn-dark:hover{background:var(--res);transform:translateY(-2px)}
+.btn-w{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.btn-w:hover{background:rgba(255,255,255,.28)}
+.btn-eau{background:var(--eau);color:#fff}
+.btn-eau:hover{background:#145060;transform:translateY(-2px)}
+.btn-feu{background:var(--feu);color:#fff}
+.btn-feu:hover{background:#8d2c06;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--encre);border:1px solid var(--bord)}
+.btn-outline:hover{background:var(--encre);color:var(--blanc)}
+
+/* ─── UTILS ──────────────────────────────────────────── */
+.lbl{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:.8rem;display:block}
+.c-eau{color:var(--eau)}.c-feu{color:var(--feu)}.c-terre{color:var(--terre)}.c-res{color:var(--res)}
+.sep-line{width:44px;height:1.5px;margin:1.5rem 0}
+.bg-eau .sep-line,.bg-feu .sep-line,.bg-terre .sep-line{background:rgba(255,255,255,.4)}
+.bg-blanc .sep-line{background:var(--res)}
+.sep-line.dark{background:var(--res)}
+
+.fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease}
+.fu.vis{opacity:1;transform:none}
+
+/* ─── LAYOUTS ────────────────────────────────────────── */
+.wrap{max-width:1160px;margin:0 auto;padding:0 2.5rem}
+.pad{padding:5rem 2.5rem}
+.pad-sm{padding:3.5rem 2.5rem}
+
+/* ─── COULEURS DE SECTIONS ───────────────────────────── */
+.bg-blanc{background:var(--blanc)}
+.bg-lin{background:var(--lin)}
+.bg-eau{background:var(--eau);color:#fff}
+.bg-eau p,.bg-eau h1,.bg-eau h2,.bg-eau h3{color:#fff}
+.bg-feu{background:var(--feu);color:#fff}
+.bg-feu p,.bg-feu h1,.bg-feu h2,.bg-feu h3{color:#fff}
+.bg-terre{background:var(--terre);color:#fff}
+.bg-terre p,.bg-terre h1,.bg-terre h2,.bg-terre h3{color:#fff}
+.bg-encre{background:var(--encre);color:var(--blanc)}
+.bg-encre p{color:rgba(243,237,226,.7)}
+
+/* ══════════════════════════════════════════════════════
+   ■ ACCUEIL
+══════════════════════════════════════════════════════ */
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;padding-top:60px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:5rem 3rem 5rem 2.5rem;background:var(--blanc)}
+.hero-over{font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--eau);margin-bottom:1.5rem}
+.hero-h1{margin-bottom:.5rem}
+.hero-h1 em{color:var(--res);display:block}
+.hero-accroche{font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:clamp(1.1rem,1.7vw,1.5rem);line-height:1.55;color:var(--gris);border-left:2px solid var(--res);padding-left:1.3rem;margin:2rem 0}
+.hero-p{margin-bottom:2.5rem;max-width:46ch}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+
+.hero-right{position:relative;overflow:hidden}
+.hero-img{width:100%;height:100%;object-fit:cover;filter:saturate(.9)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(26,21,16,.08) 0%,transparent 60%)}
+.hero-badge{position:absolute;bottom:2.5rem;right:2.5rem;width:120px;height:120px;border-radius:50%;background:var(--res);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:.8rem}
+.hero-badge p{font-family:'Fraunces',serif;font-style:italic;font-size:.75rem;line-height:1.3;color:#fff;font-weight:200}
+
+/* RING animation */
+.ring-hero{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:260px;height:260px}
+.rh{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.3);animation:rip 5s ease-out infinite}
+.rh2{animation-delay:1.2s;transform:scale(.75)}
+.rh3{animation-delay:2.4s;transform:scale(.5)}
+@keyframes rip{0%{transform:scale(.45);opacity:0}15%{opacity:.8}100%{transform:scale(1.3);opacity:0}}
+.rh2{animation-delay:1.2s}.rh3{animation-delay:2.4s}
+
+/* SERVICES */
+.srv-4{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto}
+.srv-card{position:relative;overflow:hidden;min-height:380px;display:flex;flex-direction:column;justify-content:flex-end;cursor:pointer;transition:filter .3s}
+.srv-card:hover{filter:brightness(1.05)}
+.srv-bg{position:absolute;inset:0;transition:transform .5s ease}
+.srv-card:hover .srv-bg{transform:scale(1.04)}
+.srv-bg img{width:100%;height:100%;object-fit:cover}
+.srv-overlay{position:absolute;inset:0}
+.srv-content{position:relative;z-index:2;padding:2.5rem}
+.srv-lbl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:.6rem}
+.srv-h{font-family:'Fraunces',serif;font-weight:200;font-size:1.65rem;color:#fff;margin-bottom:.6rem;line-height:1.2}
+.srv-desc{font-size:.9rem;color:rgba(255,255,255,.8);margin-bottom:1.5rem;max-width:38ch}
+.srv-arrow{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .2s,transform .2s;display:inline-block}
+.srv-card:hover .srv-arrow{color:#fff;transform:translateX(5px)}
+
+.srv-eau .srv-overlay{background:linear-gradient(to top,rgba(26,96,112,.88) 0%,rgba(26,96,112,.35) 60%,transparent 100%)}
+.srv-feu .srv-overlay{background:linear-gradient(to top,rgba(174,54,8,.9) 0%,rgba(174,54,8,.4) 55%,transparent 100%)}
+.srv-terre .srv-overlay{background:linear-gradient(to top,rgba(99,64,25,.9) 0%,rgba(99,64,25,.45) 55%,transparent 100%)}
+.srv-res .srv-overlay{background:linear-gradient(to top,rgba(30,25,18,.88) 0%,rgba(30,25,18,.4) 55%,transparent 100%)}
+
+/* QUOTE BAND */
+.quote-band{padding:6rem 2.5rem;text-align:center}
+.quote-band .display-q{font-size:clamp(1.4rem,2.5vw,2rem);max-width:760px;margin:0 auto 1.2rem;color:#fff}
+.q-attr{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+/* ABOUT SPLIT */
+.about-split{display:grid;grid-template-columns:1fr 1fr}
+.about-photo-col{position:relative;min-height:560px;overflow:hidden}
+.about-photo-col img{width:100%;height:100%;object-fit:cover}
+.about-text-col{padding:5rem 3.5rem;display:flex;flex-direction:column;justify-content:center}
+.about-text-col h2{margin-bottom:1.5rem}
+.about-text-col .display-q{color:var(--gris);margin:1.5rem 0;padding:1.2rem 1.4rem;border-left:2px solid var(--res);background:var(--res-p)}
+
+/* ══════════════════════════════════════════════════════
+   ■ QUI SUIS-JE
+══════════════════════════════════════════════════════ */
+.qui-header{height:52vh;position:relative;overflow:hidden;padding-top:60px}
+.qui-header img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+.qui-header-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(26,21,16,.25) 0%,rgba(26,21,16,.7) 100%);display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:3.5rem 2.5rem}
+.qui-header h1{color:#fff;font-size:clamp(2.2rem,5vw,4rem)}
+.qui-header .lbl{color:rgba(255,255,255,.7)}
+
+.qui-body{display:grid;grid-template-columns:360px 1fr;gap:5rem;align-items:start;max-width:1100px;margin:0 auto;padding:5rem 2.5rem}
+.qui-sticky{position:sticky;top:6rem}
+.qui-photo{border-radius:3px;overflow:hidden;aspect-ratio:4/5;background:var(--eau-p)}
+.qui-photo img{width:100%;height:100%;object-fit:cover}
+.qui-tag{display:inline-block;margin-top:1.2rem;background:var(--res-p);border:1px solid rgba(142,102,18,.25);border-radius:2px;padding:1.2rem;width:100%}
+.qui-tag .display-q{font-size:.98rem;color:var(--encre)}
+
+.qui-block{padding-bottom:2.5rem;margin-bottom:2.5rem;border-bottom:1px solid var(--bord)}
+.qui-block:last-child{border-bottom:none}
+.qui-block h3{font-family:'IBM Plex Mono',monospace;font-weight:300;font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--res);margin-bottom:.9rem}
+.traits{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.9rem}
+.trait{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;padding:.3rem .8rem;border:1px solid rgba(142,102,18,.3);color:var(--res);border-radius:2px}
+.pull-quote{margin:1.2rem 0;padding:1.1rem 1.3rem;border-left:2px solid var(--feu);background:var(--feu-p)}
+.pull-quote.eau{border-color:var(--eau);background:var(--eau-p)}
+
+/* ══════════════════════════════════════════════════════
+   ■ PRATIQUES
+══════════════════════════════════════════════════════ */
+.prat-header{padding:7rem 2.5rem 3rem;text-align:center;background:var(--blanc)}
+.prat-header .display-q{max-width:60ch;margin:1.2rem auto 0;color:var(--gris)}
+
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--encre)}
+.tab-btn{background:none;border:none;cursor:pointer;position:relative;padding:2.8rem 2.5rem;text-align:left;transition:opacity .3s;opacity:.45}
+.tab-btn.active{opacity:1}
+.tab-btn .tb-lbl{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.7);display:block;margin-bottom:.7rem}
+.tab-btn .tb-title{font-family:'Fraunces',serif;font-weight:200;font-size:clamp(1.4rem,2.5vw,2.2rem);line-height:1.15;color:#fff;display:block;margin-bottom:.6rem}
+.tab-btn .tb-sub{font-family:'Karla',sans-serif;font-weight:300;font-size:.88rem;color:rgba(255,255,255,.7);display:block}
+.tab-btn .tb-arrow{display:inline-block;margin-top:1.1rem;font-family:'IBM Plex Mono',monospace;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:color .25s}
+.tab-btn.active .tb-arrow{color:#fff}
+.tab-eau{background:var(--eau)}
+.tab-feu{background:var(--feu)}
+.tab-eau:hover{background:#1e7085}
+.tab-feu:hover{background:#c44010}
+.tab-btn:hover{opacity:1}
+.tab-btn:hover .tb-arrow{color:rgba(255,255,255,.9)}
+.tab-btn::after{display:none}
+.tab-c{display:none}.tab-c.active{display:block}
+
+/* Tab hero bandes */
+.tab-hero{height:52vh;position:relative;overflow:hidden}
+.tab-hero img{width:100%;height:100%;object-fit:cover}
+.tab-hero-overlay{position:absolute;inset:0;display:flex;align-items:flex-end;padding:3rem 2.5rem}
+.tab-hero-text{max-width:640px}
+.tab-hero-text .lbl{color:rgba(255,255,255,.7)}
+.tab-hero-text h2{color:#fff;font-size:clamp(1.8rem,3.5vw,3rem)}
+.tab-hero-text p{color:rgba(255,255,255,.8);margin-top:.8rem;max-width:50ch}
+
+.tab-body{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1140px;margin:0 auto;padding:5rem 2.5rem}
+.tab-vis{position:sticky;top:6rem}
+.instr-list{display:flex;flex-wrap:wrap;gap:.45rem;margin:1.2rem 0}
+.itag{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.28rem .72rem;border:1px solid;border-radius:2px}
+.eau-t{border-color:rgba(26,96,112,.3);color:var(--eau);background:var(--eau-p)}
+.feu-t{border-color:rgba(174,54,8,.3);color:var(--feu);background:var(--feu-p)}
+
+.steps-list{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
+.step-row{display:flex;gap:1.2rem;align-items:flex-start;padding:.9rem;background:var(--lin);border-radius:2px}
+.step-n{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--res);opacity:.7;min-width:1.5rem;padding-top:.15rem}
+.step-row p{font-size:.9rem;margin:0;color:var(--gris)}
+
+.price-table{margin-top:2rem;border:1px solid var(--bord);border-radius:3px;overflow:hidden}
+.pt-head{padding:.7rem 1.2rem;display:flex;justify-content:space-between;align-items:center}
+.pt-head.eau-h{background:var(--eau)}.pt-head.feu-h{background:var(--feu)}
+.pt-head span{font-family:'IBM Plex Mono',monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.pt-row{display:flex;justify-content:space-between;align-items:center;padding:.75rem 1.2rem;border-bottom:1px solid var(--bord);background:var(--blanc);gap:.7rem}
+.pt-row:last-child{border-bottom:none}
+.pt-lbl{font-size:.92rem;color:var(--encre)}
+.pt-sub{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--gris);margin-top:.1rem;letter-spacing:.05em}
+.pt-price{font-family:'IBM Plex Mono',monospace;font-size:.82rem;font-weight:400;white-space:nowrap}
+.eau-price{color:var(--eau)}.feu-price{color:var(--feu)}
+
+.teaser-cercles{display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;padding:2.5rem;border-radius:3px;max-width:1140px;margin:0 auto 3rem;background:var(--eau-p);border:1px solid rgba(26,96,112,.15)}
+.teaser-cercles h3{margin-bottom:.4rem;font-size:1.1rem}
+.teaser-cercles p{font-size:.9rem}
+
+/* ══════════════════════════════════════════════════════
+   ■ JOURNÉE DUO
+══════════════════════════════════════════════════════ */
+.duo-full{position:relative;min-height:65vh;display:flex;align-items:flex-end;padding-top:60px;overflow:hidden}
+.duo-full img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+.duo-full-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(99,64,25,.92) 0%,rgba(99,64,25,.5) 50%,rgba(99,64,25,.15) 100%)}
+.duo-full-text{position:relative;z-index:2;padding:4rem 2.5rem;max-width:700px}
+.duo-full-text .lbl{color:rgba(255,255,255,.65)}
+.duo-full-text h1{color:#fff;font-size:clamp(2.2rem,5vw,4rem);margin-bottom:1rem}
+.duo-full-text p{color:rgba(255,255,255,.8);margin-bottom:2rem;max-width:52ch;font-size:1rem}
+
+.duo-body{display:grid;grid-template-columns:1fr 1fr;gap:5rem;max-width:1140px;margin:0 auto;padding:5rem 2.5rem;align-items:start}
+.d-item{display:flex;gap:1.3rem;padding:1.5rem;border-radius:3px;background:var(--blanc);border:1px solid var(--bord);margin-bottom:1rem;transition:box-shadow .25s}
+.d-item:hover{box-shadow:0 4px 20px rgba(26,21,16,.08)}
+.d-ico{font-size:1.6rem;min-width:2.2rem}
+.d-item h3{margin-bottom:.3rem;color:var(--encre)}
+.d-item p{font-size:.88rem}
+
+.duo-price-card{background:var(--terre);padding:2.5rem;border-radius:3px;text-align:center;color:#fff}
+.duo-price-card p{color:rgba(255,255,255,.75)}
+.price-num{font-family:'Fraunces',serif;font-size:4.5rem;font-weight:200;color:#fff;line-height:1;margin:.8rem 0}
+.duo-q-card{padding:2rem;border:1px solid var(--bord);border-radius:3px;background:var(--blanc);margin-top:1.5rem}
+.duo-q-card .display-q{font-size:1.05rem}
+.duo-q-card .q-by{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--res);margin-top:.9rem}
+
+/* ══════════════════════════════════════════════════════
+   ■ TARIFS
+══════════════════════════════════════════════════════ */
+.tarifs-top{padding:8rem 2.5rem 3.5rem;background:var(--encre);text-align:center}
+.tarifs-top h1{color:var(--blanc)}
+.tarifs-top p{color:rgba(243,237,226,.6);max-width:50ch;margin:.7rem auto 0}
+
+.tarifs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto;padding:3rem 2.5rem}
+.t-card{background:var(--blanc);border-radius:3px;overflow:hidden;border:1px solid var(--bord)}
+.t-card-head{padding:1.4rem 1.8rem;display:flex;align-items:center;gap:.9rem}
+.t-card-head h3{color:#fff;font-size:1.05rem;font-weight:300}
+.t-head-eau{background:var(--eau)}.t-head-feu{background:var(--feu)}.t-head-terre{background:var(--terre)}
+.t-body{padding:.5rem 1.8rem 1.5rem}
+.t-row{display:flex;justify-content:space-between;align-items:baseline;padding:.75rem 0;border-bottom:1px solid var(--bord);gap:.7rem}
+.t-row:last-child{border-bottom:none}
+.t-name{font-size:.93rem;color:var(--encre)}
+.t-detail{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--gris);margin-top:.12rem;letter-spacing:.04em}
+.t-price{font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;white-space:nowrap}
+.eau-pr{color:var(--eau)}.feu-pr{color:var(--feu)}.terre-pr{color:var(--terre)}
+
+.zone-band{background:var(--eau-p);border-top:1px solid rgba(26,96,112,.15);border-bottom:1px solid rgba(26,96,112,.15);padding:1.8rem 2.5rem;text-align:center}
+.zone-band .lbl{color:var(--eau);display:inline-block}
+.zone-band p{font-size:.88rem;margin-top:.3rem}
+
+/* ══════════════════════════════════════════════════════
+   ■ CONTACT
+══════════════════════════════════════════════════════ */
+.contact-top{background:var(--eau);padding:8rem 2.5rem 4rem}
+.contact-top h1{color:#fff;max-width:540px}
+.contact-top p{color:rgba(255,255,255,.7);max-width:50ch;margin-top:.8rem}
+.contact-body{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;max-width:1080px;margin:0 auto;padding:4rem 2.5rem 5rem;align-items:start}
+.c-info-bloc{padding:1.5rem;border-radius:3px}
+.c-info-bloc.eau{background:var(--eau-p);border:1px solid rgba(26,96,112,.15)}
+.c-info-bloc .display-q{font-size:.98rem;color:var(--encre)}
+.c-info-bloc .q-by{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--res);margin-top:.7rem}
+.c-dets{display:flex;flex-direction:column;gap:.8rem;margin:1.8rem 0}
+.c-det{display:flex;gap:1rem;align-items:center}
+.c-det .mono{color:var(--eau);min-width:5.5rem}
+.c-det span{font-size:.9rem;color:var(--gris)}
+
+.form-card{background:var(--blanc);border:1px solid var(--bord);border-radius:3px;padding:2.5rem;display:flex;flex-direction:column;gap:1.3rem}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gris)}
+.fg input,.fg select,.fg textarea{background:var(--lin);border:1px solid var(--bord);border-radius:2px;padding:.8rem 1rem;color:var(--encre);font-family:'Karla',sans-serif;font-size:.94rem;transition:border-color .25s,box-shadow .25s;outline:none;-webkit-appearance:none}
+.fg select option{background:var(--blanc)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--eau);box-shadow:0 0 0 3px rgba(26,96,112,.1);background:var(--blanc)}
+.fg textarea{resize:vertical;min-height:130px}
+.form-note{font-size:.76rem;color:var(--gris);line-height:1.55}
+
+/* ══════════════════════════════════════════════════════
+   ■ MENTIONS
+══════════════════════════════════════════════════════ */
+.legal-body{max-width:760px;margin:0 auto;padding:8rem 2.5rem 5rem}
+.legal-body h1{margin-bottom:3rem;font-size:clamp(1.7rem,3vw,2.5rem)}
+.ls{margin-bottom:2.8rem}
+.ls h2{font-family:'IBM Plex Mono',monospace;font-weight:300;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--res);margin-bottom:.9rem}
+.ls p{font-size:.92rem;color:var(--gris);margin-bottom:.65rem}
+
+/* ══════════════════════════════════════════════════════
+   ■ FOOTER
+══════════════════════════════════════════════════════ */
+footer{background:var(--encre);padding:4rem 2.5rem;text-align:center}
+.ft-q{font-family:'Fraunces',serif;font-style:italic;font-weight:200;font-size:1.3rem;color:rgba(243,237,226,.65);margin-bottom:2rem}
+.ft-links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-bottom:1.3rem}
+.ft-links a{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.09em;text-transform:uppercase;color:rgba(243,237,226,.35);text-decoration:none;cursor:pointer;transition:color .2s}
+.ft-links a:hover{color:var(--res-m)}
+.ft-copy{font-size:.68rem;color:rgba(243,237,226,.2)}
+
+/* ══════════════════════════════════════════════════════
+   ■ RESPONSIVE
+══════════════════════════════════════════════════════ */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-right{height:55vw}
+  .about-split{grid-template-columns:1fr}
+  .about-photo-col{min-height:60vw}
+  .srv-4{grid-template-columns:1fr}
+  .srv-card{min-height:300px}
+  .qui-body{grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 1.5rem}
+  .qui-sticky{position:static}
+  .tab-body{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+  .tab-vis{position:static}
+  .duo-body{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+  .contact-body{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.5rem}
+  nav{padding:.8rem 1.5rem}
+  .nav-links{display:none;position:fixed;inset:0;background:var(--blanc);flex-direction:column;align-items:center;justify-content:center;gap:3rem;z-index:299}
+  .nav-links.open{display:flex}
+  .nav-links a{font-size:1rem}
+  .burger{display:flex}
+  .hero-left{padding:4rem 1.5rem}
+  .pad,.pad-sm{padding:3.5rem 1.5rem}
+  .wrap{padding:0 1.5rem}
+  .tarifs-grid{padding:2.5rem 1.5rem}
+  .contact-top{padding:7rem 1.5rem 3rem}
+  .tarifs-top{padding:7rem 1.5rem 2.5rem}
+}
+@media(max-width:520px){
+  .hero-ctas{flex-direction:column;align-items:flex-start}
+  .srv-4{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .fu{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ─────────────────────────────────────────────── -->
+<nav>
+  <span class="logo" onclick="go('accueil')">Racines <span>&amp;</span> Résonances</span>
+  <ul class="nav-links" id="nl">
+    <li><a onclick="go('accueil');cn()">Accueil</a></li>
+    <li><a onclick="go('qui');cn()">Qui suis-je</a></li>
+    <li><a onclick="go('pratiques');cn()">Pratiques</a></li>
+    <li><a onclick="go('duo');cn()">Journée Duo</a></li>
+    <li><a onclick="go('tarifs');cn()">Tarifs</a></li>
+    <li><a onclick="go('contact');cn()">Contact</a></li>
+  </ul>
+  <button class="burger" id="bg" onclick="tn()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════
+     ■ ACCUEIL
+══════════════════════════════════════════════════════ -->
+<div id="page-accueil" class="page active">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <p class="hero-over">Pratiques chamaniques &amp; sonores · Sud-Essonne</p>
+      <h1 class="hero-h1">Racines<br><em>et Résonances</em></h1>
+      <p class="hero-accroche">"Tu es aimée et soutenue.<br>Tout est possible."</p>
+      <p class="hero-p">Ancrée dans la pratique chamanique du tambour, guidée par le son, le chant et la vibration, j'accompagne celles et ceux qui traversent un moment de vie où ils se sentent bloqués — pour retrouver confiance, énergie, et connexion à eux-mêmes.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-dark" onclick="go('pratiques')">Découvrir les pratiques</button>
+        <button class="btn btn-outline" onclick="go('contact')">Prendre contact</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="images/IMG_20231216_154457.jpg" alt="Pont — lumière dorée">
+      <div class="hero-overlay"></div>
+      <div class="ring-hero">
+        <div class="rh"></div>
+        <div class="rh rh2"></div>
+        <div class="rh rh3"></div>
+      </div>
+      <div class="hero-badge">
+        <p>Son · Vibration · Présence</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES 2×2 photo-cards -->
+  <div class="srv-4">
+    <div class="srv-card srv-eau" onclick="go('pratiques');st('eau')">
+      <div class="srv-bg">
+        <img src="images/IMG_20211123_105521.jpg" alt="Bols tibétains" style="object-position:center center">
+      </div>
+      <div class="srv-overlay"></div>
+      <div class="srv-content">
+        <p class="srv-lbl">Élément Eau</p>
+        <p class="srv-h">Bains &amp; Massages Sonores</p>
+        <p class="srv-desc">Bols tibétains, bols de cristal, gongs, massage sonore. Une invitation à se laisser porter par la vibration.</p>
+        <span class="srv-arrow">Explorer ce soin →</span>
+      </div>
+    </div>
+    <div class="srv-card srv-feu" onclick="go('pratiques');st('feu')">
+      <div class="srv-bg">
+        <img src="images/IMG_20211123_105018.jpg" alt="Soins chamaniques — tambour et hochet">
+      </div>
+      <div class="srv-overlay"></div>
+      <div class="srv-content">
+        <p class="srv-lbl">Élément Feu</p>
+        <p class="srv-h">Soins Chamaniques &amp; Énergétiques</p>
+        <p class="srv-desc">Tambour, voyage chamanique, animal de pouvoir, pendule, kila, chant. Chaque soin est unique.</p>
+        <span class="srv-arrow">Explorer ce soin →</span>
+      </div>
+    </div>
+    <div class="srv-card srv-terre" onclick="go('duo')">
+      <div class="srv-bg">
+        <img src="images/IMG_20211123_103425.jpg" alt="Espace de soin — journée duo">
+      </div>
+      <div class="srv-overlay"></div>
+      <div class="srv-content">
+        <p class="srv-lbl">Élément Terre</p>
+        <p class="srv-h">Journée Duo</p>
+        <p class="srv-desc">Une journée entière à deux, entre amies, de 10h à 17h. Rituels, instruments, forêt ou chez moi.</p>
+        <span class="srv-arrow">Découvrir →</span>
+      </div>
+    </div>
+    <div class="srv-card srv-res" onclick="go('tarifs')">
+      <div class="srv-bg">
+        <img src="images/IMG_20240403_143542.jpg" alt="Fleur blanche — douceur" style="object-position:center center">
+      </div>
+      <div class="srv-overlay"></div>
+      <div class="srv-content">
+        <p class="srv-lbl">Interventions</p>
+        <p class="srv-h">En Structure</p>
+        <p class="srv-desc">Associations, crèches, EHPAD. Des séances de bain sonore adaptées à tous les publics.</p>
+        <span class="srv-arrow">En savoir plus →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUOTE BAND teal -->
+  <div class="quote-band bg-eau fu">
+    <p class="display-q">"Se libérer des parasites reçus au fil de la vie, dans un cadre sécurisant qui permet de s'autoriser à déposer et à s'ouvrir."</p>
+    <p class="q-attr">— Sandrine</p>
+  </div>
+
+  <!-- ABOUT SPLIT -->
+  <div class="about-split">
+    <div class="about-photo-col">
+      <img src="images/IMG_20200402_170537.jpg" alt="Sandrine — praticienne" style="object-position:center top">
+    </div>
+    <div class="about-text-col pad">
+      <div class="fu">
+        <span class="lbl c-res">Sandrine</span>
+        <h2>Une praticienne ancrée dans plusieurs transmissions</h2>
+        <div class="sep-line dark"></div>
+        <p style="margin-bottom:1.2rem">Je ne me rattache à aucune école ni tradition unique. J'ai reçu des transmissions de plusieurs femmes-médecine — péruvienne, népalaise, mongole — mais je préfère aujourd'hui écouter ma propre guidance.</p>
+        <div class="display-q" style="margin:1.5rem 0;padding:1.2rem 1.4rem;border-left:2px solid var(--res);background:var(--res-p);font-size:1.05rem">"Souvent la souffrance vient avec une aspiration de l'âme à se reconnecter profondément à sa spiritualité et à sa créativité."</div>
+        <p style="margin-bottom:2rem">Chaleureuse, à l'écoute, résiliente — ce sont les trois mots que je choisis pour me présenter.</p>
+        <button class="btn btn-dark" onclick="go('qui')">Mon parcours →</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="ft-q">"Tu es aimée, tu es soutenue, tout est possible."</p>
+    <div class="ft-links">
+      <a onclick="go('accueil')">Accueil</a><a onclick="go('qui')">Qui suis-je</a><a onclick="go('pratiques')">Pratiques</a><a onclick="go('duo')">Journée Duo</a><a onclick="go('tarifs')">Tarifs</a><a onclick="go('contact')">Contact</a><a onclick="go('mentions')">Mentions légales</a>
+    </div>
+    <p class="ft-copy">© 2025 Racines et Résonances · Sandrine · Sud-Essonne, Dourdan</p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     ■ QUI SUIS-JE
+══════════════════════════════════════════════════════ -->
+<div id="page-qui" class="page">
+  <div class="qui-header">
+    <img src="images/IMG_20230415_154911.jpg" alt="Plume — nature" style="object-position:center center">
+    <div class="qui-header-overlay">
+      <span class="lbl" style="color:rgba(255,255,255,.65)">Qui suis-je</span>
+      <h1>Un parcours tissé<br>de transmissions</h1>
+    </div>
+  </div>
+
+  <div class="qui-body">
+    <div class="qui-sticky">
+      <div class="qui-photo">
+        <img src="images/IMG_20200402_180950.jpg" alt="Sandrine — portrait" style="object-position:center top">
+      </div>
+      <div class="qui-tag">
+        <div class="display-q">"Ça a réveillé quelque chose chez moi, comme une connaissance profonde, déjà là."</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="qui-block fu">
+        <h3>Le déclencheur</h3>
+        <p>Tout a commencé par un tambour. Un jour, j'ai entendu celui d'une chamane nord-américaine, et quelque chose s'est réveillé en moi. Je me suis mise en quête de comprendre les effets du son et de la vibration sur le corps. J'ai cherché mon propre tambour, puis j'ai appris à voyager avec lui. Peu à peu, d'autres instruments sont venus — bols tibétains, bols de cristal, gongs, chant, pendule.</p>
+      </div>
+
+      <div class="qui-block fu">
+        <h3>Ma posture</h3>
+        <p>Je ne me rattache à aucune école ni tradition unique. J'ai reçu des transmissions de plusieurs femmes-médecine — une guérisseuse péruvienne, une chamane népalaise, une chamane mongole — mais je préfère aujourd'hui écouter ma propre guidance et créer, pour chaque personne, les rituels qui lui correspondent vraiment.</p>
+        <div class="traits">
+          <span class="trait">Chaleureuse</span><span class="trait">À l'écoute</span><span class="trait">Résiliente</span>
+        </div>
+      </div>
+
+      <div class="qui-block fu">
+        <h3>Ce que signifie accompagner</h3>
+        <p>Pour moi, accompagner, c'est offrir un cadre sécurisé de reconnexion à soi et à son âme, pour se libérer des schémas reçus au fil de la vie. Vous restez seul·e responsable de votre chemin : je ne prends jamais le pouvoir sur le processus de quelqu'un, je le facilite.</p>
+      </div>
+
+      <div class="qui-block fu">
+        <h3>Éthique</h3>
+        <div class="pull-quote">
+          <div class="display-q">"Je ne me rendrai jamais responsable de son travail personnel. Je souhaite transmettre, faciliter — en aucun cas avoir une relation d'emprise sur la personne."</div>
+        </div>
+        <p>Éviter toute forme d'emprise est, pour moi, une exigence éthique non négociable. Vous êtes et restez la seule autorité de votre vie.</p>
+      </div>
+
+      <div class="qui-block fu">
+        <h3>Vision à venir</h3>
+        <div class="pull-quote eau">
+          <div class="display-q">"La libération de la voix, c'est un retour à la voix de son âme. Le rassemblement des femmes en cercle de chant, c'est pour moi la plus belle des pratiques."</div>
+        </div>
+        <p>Des cercles de femmes et des cérémonies saisonnières verront bientôt le jour. Un lieu d'accueil et de retraite prend également forme.</p>
+      </div>
+
+      <button class="btn btn-eau" onclick="go('contact')">Me contacter</button>
+    </div>
+  </div>
+
+  <footer>
+    <p class="ft-q">"Tu es aimée, tu es soutenue, tout est possible."</p>
+    <div class="ft-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('pratiques')">Pratiques</a><a onclick="go('tarifs')">Tarifs</a><a onclick="go('contact')">Contact</a><a onclick="go('mentions')">Mentions légales</a></div>
+    <p class="ft-copy">© 2025 Racines et Résonances · Sandrine · Sud-Essonne, Dourdan</p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     ■ PRATIQUES
+══════════════════════════════════════════════════════ -->
+<div id="page-pratiques" class="page">
+  <div class="prat-header">
+    <span class="lbl c-res">Les pratiques</span>
+    <h1 style="font-size:clamp(1.9rem,3.8vw,3.2rem)">Deux portes d'entrée,<br>une même présence</h1>
+    <p class="display-q">"Se libérer des parasites reçus au fil de la vie, dans un cadre sécurisant qui permet de s'autoriser à déposer et à s'ouvrir."</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn tab-eau active" id="btn-eau" onclick="st('eau')">
+      <span class="tb-lbl">Élément Eau</span>
+      <span class="tb-title">Bains &amp; Massages Sonores</span>
+      <span class="tb-sub">Bols tibétains, bols de cristal, gongs</span>
+      <span class="tb-arrow">Explorer →</span>
+    </button>
+    <button class="tab-btn tab-feu" id="btn-feu" onclick="st('feu')">
+      <span class="tb-lbl">Élément Feu</span>
+      <span class="tb-title">Soins Chamaniques &amp; Énergétiques</span>
+      <span class="tb-sub">Tambour, voyage chamanique, chant</span>
+      <span class="tb-arrow">Explorer →</span>
+    </button>
+  </div>
+
+  <!-- EAU -->
+  <div id="tc-eau" class="tab-c active">
+    <div class="tab-hero">
+      <img src="images/IMG_20211123_105521.jpg" alt="Bols tibétains — bain sonore" style="object-position:center center">
+      <div class="tab-hero-overlay" style="background:linear-gradient(to top,rgba(26,96,112,.9) 0%,rgba(26,96,112,.4) 60%,transparent 100%)">
+        <div class="tab-hero-text">
+          <span class="lbl" style="color:rgba(255,255,255,.65)">Élément Eau</span>
+          <h2>Se laisser porter<br>par la vibration</h2>
+          <p>Bols tibétains, bols de cristal, gongs, massage sonore — une pratique accessible à toutes et tous.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-body">
+      <div class="tab-vis">
+        <div style="border-radius:3px;overflow:hidden;aspect-ratio:1;background:var(--eau-p)">
+          <img src="images/IMG_20211123_105604.jpg" alt="Bol tibétain — symbole" style="object-position:center center">
+        </div>
+        <div class="price-table" style="margin-top:2rem">
+          <div class="pt-head eau-h"><span>Tarifs</span></div>
+          <div class="pt-row"><div><p class="pt-lbl">Séance individuelle</p><p class="pt-sub">1h15</p></div><span class="pt-price eau-price">80 €</span></div>
+          <div class="pt-row"><div><p class="pt-lbl">Bain collectif</p><p class="pt-sub">2h · 2 à 6 personnes · chez moi</p></div><span class="pt-price eau-price">25 €/pers.</span></div>
+          <div class="pt-row"><div><p class="pt-lbl">Carte de séances</p><p class="pt-sub">3 à 4 séances</p></div><span class="pt-price eau-price">Préférentiel</span></div>
+          <div class="pt-row"><div><p class="pt-lbl">Carte cadeau</p><p class="pt-sub">Bain ou massage sonore</p></div><span class="pt-price eau-price">Disponible</span></div>
+        </div>
+        <div style="margin-top:1.2rem"><button class="btn btn-eau" onclick="go('contact')">Réserver une séance</button></div>
+      </div>
+      <div class="fu">
+        <div class="instr-list">
+          <span class="itag eau-t">Bols tibétains</span><span class="itag eau-t">Bols de cristal</span><span class="itag eau-t">Gongs</span><span class="itag eau-t">Massage sonore</span>
+        </div>
+        <p style="margin-bottom:1.1rem">Allongé·e, il n'y a rien d'autre à faire qu'écouter et recevoir — le corps se détend, l'esprit se pose. Le massage sonore complète le bain en appliquant les bols directement sur le corps, pour une expérience de vibration encore plus incarnée.</p>
+        <div class="pull-quote eau">
+          <div class="display-q">"Il y a toujours une possibilité d'évolution et de solution : les obstacles sont aussi des apprentissages de la vie."</div>
+        </div>
+        <p>Une pratique accessible à toutes et tous, seul·e ou en petit groupe. Aucune expérience préalable n'est nécessaire.</p>
+
+        <h3 style="margin:2.5rem 0 1rem;font-size:1rem;font-family:'IBM Plex Mono',monospace;font-weight:300;letter-spacing:.15em;text-transform:uppercase;color:var(--gris)">Déroulé d'une séance</h3>
+        <div class="steps-list">
+          <div class="step-row"><span class="step-n">01</span><p>Accueil et installation confortable — vous êtes allongé·e, couvert·e, en sécurité.</p></div>
+          <div class="step-row"><span class="step-n">02</span><p>Quelques respirations pour poser une intention, aussi simple soit-elle.</p></div>
+          <div class="step-row"><span class="step-n">03</span><p>Le bain sonore commence — bols disposés autour de vous, ondes qui se répondent.</p></div>
+          <div class="step-row"><span class="step-n">04</span><p>Retour en silence, puis partage libre des ressentis.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEU -->
+  <div id="tc-feu" class="tab-c">
+    <div class="tab-hero">
+      <img src="images/IMG_20211123_105018.jpg" alt="Tambour chamanique" style="object-position:center top">
+      <div class="tab-hero-overlay" style="background:linear-gradient(to top,rgba(174,54,8,.92) 0%,rgba(174,54,8,.45) 60%,transparent 100%)">
+        <div class="tab-hero-text">
+          <span class="lbl" style="color:rgba(255,255,255,.65)">Élément Feu</span>
+          <h2>Voyager vers<br>ce qui demande à guérir</h2>
+          <p>Tambour, voyage chamanique, animal de pouvoir — chaque soin se construit dans l'instant.</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-body">
+      <div class="tab-vis">
+        <div style="border-radius:3px;overflow:hidden;aspect-ratio:1;background:var(--feu-p)">
+          <img src="images/IMG_20211123_105440.jpg" alt="Instruments chamaniques" style="object-position:center top">
+        </div>
+        <div class="price-table" style="margin-top:2rem">
+          <div class="pt-head feu-h"><span>Tarifs</span></div>
+          <div class="pt-row"><div><p class="pt-lbl">Soin individuel</p><p class="pt-sub">1h15</p></div><span class="pt-price feu-price">80 €</span></div>
+          <div class="pt-row"><div><p class="pt-lbl">Carte de soins</p><p class="pt-sub">3 à 4 soins</p></div><span class="pt-price feu-price">Préférentiel</span></div>
+          <div class="pt-row"><div><p class="pt-lbl">Carte cadeau</p><p class="pt-sub">Soin énergétique chamanique</p></div><span class="pt-price feu-price">Disponible</span></div>
+        </div>
+        <div style="margin-top:1.2rem"><button class="btn btn-feu" onclick="go('contact')">Réserver un soin</button></div>
+      </div>
+      <div class="fu">
+        <div class="instr-list">
+          <span class="itag feu-t">Tambour chamanique</span><span class="itag feu-t">Voyage</span><span class="itag feu-t">Animal de pouvoir</span><span class="itag feu-t">Pendule</span><span class="itag feu-t">Kila</span><span class="itag feu-t">Chant</span>
+        </div>
+        <p style="margin-bottom:1.1rem">Le tambour ouvre toujours la porte. À partir de là, chaque soin se construit dans l'instant, guidé par ce que je ressens être juste pour vous. Il n'y a pas de déroulé écrit à l'avance — seulement une écoute fine de ce qui se présente.</p>
+        <div class="pull-quote">
+          <div class="display-q">"Je m'adapte vraiment à elle, je ne souhaite rien lui imposer."</div>
+        </div>
+        <p>Ce menu s'adresse à celles et ceux en recherche de transformation profonde, de reconnexion à leur essence, ou qui traversent un moment de vie difficile.</p>
+
+        <h3 style="margin:2.5rem 0 1rem;font-size:1rem;font-family:'IBM Plex Mono',monospace;font-weight:300;letter-spacing:.15em;text-transform:uppercase;color:var(--gris)">Déroulé d'un soin</h3>
+        <div class="steps-list">
+          <div class="step-row"><span class="step-n">01</span><p>Temps d'échange autour d'une tisane — ce qui vous amène, votre intention pour la séance.</p></div>
+          <div class="step-row"><span class="step-n">02</span><p>Le soin — sur table ou au sol, guidé par le tambour et les instruments.</p></div>
+          <div class="step-row"><span class="step-n">03</span><p>Partage des ressentis, parfois un petit rituel à poursuivre chez vous.</p></div>
+          <div class="step-row"><span class="step-n">04</span><p>Un objet symbolique à emporter — pour ancrer ce qui s'est ouvert.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teaser cercles -->
+  <div style="padding:0 2.5rem 3rem;max-width:1140px;margin:0 auto">
+    <div class="teaser-cercles fu">
+      <div style="font-size:2.4rem">🌙</div>
+      <div>
+        <h3>Cercles de femmes &amp; Cérémonies saisonnières</h3>
+        <p>Des cercles de femmes et des cérémonies saisonnières verront bientôt le jour — pour prolonger cette pratique dans un cadre collectif et ancré dans les cycles du vivant.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="ft-q">"Tu es aimée, tu es soutenue, tout est possible."</p>
+    <div class="ft-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('qui')">Qui suis-je</a><a onclick="go('duo')">Journée Duo</a><a onclick="go('tarifs')">Tarifs</a><a onclick="go('contact')">Contact</a><a onclick="go('mentions')">Mentions légales</a></div>
+    <p class="ft-copy">© 2025 Racines et Résonances · Sandrine · Sud-Essonne, Dourdan</p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     ■ JOURNÉE DUO
+══════════════════════════════════════════════════════ -->
+<div id="page-duo" class="page">
+  <div class="duo-full">
+    <img src="images/IMG_20230613_205625.jpg" alt="Plume — Journée Duo" style="object-position:center center">
+    <div class="duo-full-overlay"></div>
+    <div class="duo-full-text">
+      <span class="lbl" style="color:rgba(255,255,255,.65)">Prestation signature</span>
+      <h1>La Journée<br>Duo</h1>
+      <p>Ma proposition préférée : une journée entière à deux, entre amies, pour se retrouver et se reconnecter dans un cadre hors du temps.</p>
+      <button class="btn btn-w" onclick="go('contact')">Réserver la Journée Duo</button>
+    </div>
+  </div>
+
+  <div class="duo-body">
+    <div>
+      <span class="lbl c-res">Ce que vous vivrez</span>
+      <h2 style="margin-bottom:2.2rem">Une journée hors du temps</h2>
+      <div class="d-item fu"><div class="d-ico">🌿</div><div><h3>Le cadre</h3><p>Chez moi en Sud-Essonne ou en forêt toute proche — un espace sécurisant, hors du bruit du quotidien.</p></div></div>
+      <div class="d-item fu"><div class="d-ico">⏰</div><div><h3>L'horaire</h3><p>De 10h à 17h — une journée complète pour laisser le temps à la transformation.</p></div></div>
+      <div class="d-item fu"><div class="d-ico">🥁</div><div><h3>Le contenu</h3><p>Rituels sur mesure rythmés par le tambour, les instruments et le chant — construits dans l'instant selon vos énergies.</p></div></div>
+      <div class="d-item fu"><div class="d-ico">👭</div><div><h3>Pour qui</h3><p>Deux femmes qui se connaissent déjà — amies, sœurs, proches — souhaitant vivre ensemble une expérience de reconnexion profonde.</p></div></div>
+    </div>
+
+    <div>
+      <div class="duo-price-card fu">
+        <span class="mono" style="color:rgba(255,255,255,.6)">Prestation signature</span>
+        <div class="price-num">350 €</div>
+        <span class="mono" style="color:rgba(255,255,255,.6)">Pour le duo · journée complète</span>
+        <p style="margin-top:.9rem;font-size:.88rem">Déplacement inclus. Zone Sud-Essonne, à proximité de Dourdan.</p>
+        <button class="btn btn-w" style="margin-top:1.5rem;width:100%" onclick="go('contact')">Réserver la Journée Duo</button>
+      </div>
+      <div class="duo-q-card fu">
+        <div class="display-q">"La libération de la voix, c'est un retour à la voix de son âme. Le rassemblement des femmes en cercle de chant, c'est pour moi la plus belle des pratiques."</div>
+        <p class="q-by">— Sandrine</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p class="ft-q">"Tu es aimée, tu es soutenue, tout est possible."</p>
+    <div class="ft-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('pratiques')">Pratiques</a><a onclick="go('tarifs')">Tarifs</a><a onclick="go('contact')">Contact</a><a onclick="go('mentions')">Mentions légales</a></div>
+    <p class="ft-copy">© 2025 Racines et Résonances · Sandrine · Sud-Essonne, Dourdan</p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     ■ TARIFS
+══════════════════════════════════════════════════════ -->
+<div id="page-tarifs" class="page">
+  <div class="tarifs-top">
+    <span class="lbl" style="color:rgba(243,237,226,.5)">Tarifs</span>
+    <h1>Transparence<br>&amp; accessibilité</h1>
+    <p>Chaque séance est un moment à part entière. Voici les tarifs complets de toutes les prestations.</p>
+  </div>
+
+  <div class="tarifs-grid">
+    <div class="t-card fu">
+      <div class="t-card-head t-head-eau">
+        <span style="font-size:1.4rem">🎵</span>
+        <h3>Bains &amp; Massages Sonores</h3>
+      </div>
+      <div class="t-body">
+        <div class="t-row"><div><p class="t-name">Séance individuelle</p><p class="t-detail">1h15 · bols tibétains, bols de cristal, gongs</p></div><span class="t-price eau-pr">80 €</span></div>
+        <div class="t-row"><div><p class="t-name">Bain sonore collectif</p><p class="t-detail">2h · 2 à 6 personnes · chez Sandrine</p></div><span class="t-price eau-pr">25 €/pers.</span></div>
+        <div class="t-row"><div><p class="t-name">Carte de séances</p><p class="t-detail">3 à 4 séances · tarif préférentiel</p></div><span class="t-price eau-pr">Sur demande</span></div>
+        <div class="t-row"><div><p class="t-name">Carte cadeau</p><p class="t-detail">Bain ou massage sonore</p></div><span class="t-price eau-pr">Disponible</span></div>
+      </div>
+    </div>
+    <div class="t-card fu">
+      <div class="t-card-head t-head-feu">
+        <span style="font-size:1.4rem">🥁</span>
+        <h3>Soins Chamaniques &amp; Énergétiques</h3>
+      </div>
+      <div class="t-body">
+        <div class="t-row"><div><p class="t-name">Soin individuel</p><p class="t-detail">1h15 · tambour, voyage, pendule, kila</p></div><span class="t-price feu-pr">80 €</span></div>
+        <div class="t-row"><div><p class="t-name">Carte de soins</p><p class="t-detail">3 à 4 soins · tarif préférentiel</p></div><span class="t-price feu-pr">Sur demande</span></div>
+        <div class="t-row"><div><p class="t-name">Carte cadeau</p><p class="t-detail">Soin énergétique chamanique</p></div><span class="t-price feu-pr">Disponible</span></div>
+      </div>
+    </div>
+    <div class="t-card fu">
+      <div class="t-card-head t-head-terre">
+        <span style="font-size:1.4rem">🌿</span>
+        <h3>Prestations Spéciales</h3>
+      </div>
+      <div class="t-body">
+        <div class="t-row"><div><p class="t-name">Journée Duo</p><p class="t-detail">10h–17h · chez Sandrine ou en forêt · pour 2</p></div><span class="t-price terre-pr">350 €</span></div>
+        <div class="t-row"><div><p class="t-name">Intervention en structure</p><p class="t-detail">Associations, crèches, EHPAD · bain sonore</p></div><span class="t-price terre-pr">Sur devis</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="zone-band">
+    <span class="lbl">Zone géographique</span>
+    <p>Les séances ont lieu en Sud-Essonne, à proximité de Dourdan. Le déplacement est intégré au tarif.</p>
+  </div>
+
+  <div style="text-align:center;padding:3rem 2.5rem">
+    <p style="margin-bottom:1.3rem;font-size:.9rem;color:var(--gris)">Pour toute question, je vous réponds personnellement.</p>
+    <button class="btn btn-dark" onclick="go('contact')">Me contacter</button>
+  </div>
+
+  <footer>
+    <p class="ft-q">"Tu es aimée, tu es soutenue, tout est possible."</p>
+    <div class="ft-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('pratiques')">Pratiques</a><a onclick="go('duo')">Journée Duo</a><a onclick="go('contact')">Contact</a><a onclick="go('mentions')">Mentions légales</a></div>
+    <p class="ft-copy">© 2025 Racines et Résonances · Sandrine · Sud-Essonne, Dourdan</p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     ■ CONTACT
+══════════════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="contact-top">
+    <span class="lbl" style="color:rgba(255,255,255,.55)">Contact</span>
+    <h1>Prenons le temps<br>de vous écouter</h1>
+    <p>Remplissez ce formulaire et je vous recontacte personnellement pour échanger sur votre demande et organiser notre première rencontre.</p>
+  </div>
+
+  <div class="contact-body">
+    <div class="fu">
+      <p style="margin-bottom:1.5rem;font-size:.93rem">Pas de réservation automatisée, pas de paiement en ligne à ce stade — seulement un échange humain, au rythme qui nous convient.</p>
+      <div class="c-dets">
+        <div class="c-det"><span class="mono">Zone</span><span>Sud-Essonne · Dourdan et alentours</span></div>
+        <div class="c-det"><span class="mono">Réponse</span><span>Sous 48h en semaine</span></div>
+      </div>
+      <div class="c-info-bloc eau" style="margin-top:2rem">
+        <div class="display-q">"Chaque chemin est unique. Je suis là pour vous accompagner avec bienveillance, au rythme qui vous appartient."</div>
+        <p class="q-by" style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--res);margin-top:.7rem">— Sandrine</p>
+      </div>
+    </div>
+
+    <div class="form-card fu">
+      <div class="fg"><label for="nom">Votre prénom</label><input type="text" id="nom" name="nom" placeholder="Prénom" required></div>
+      <div class="fg"><label for="email">Votre email</label><input type="email" id="email" name="email" placeholder="adresse@email.com" required></div>
+      <div class="fg">
+        <label for="prest">Prestation souhaitée</label>
+        <select id="prest" name="prest">
+          <option value="">Choisir une prestation…</option>
+          <option>Bain sonore individuel</option>
+          <option>Bain sonore collectif</option>
+          <option>Massage sonore</option>
+          <option>Soin chamanique &amp; énergétique</option>
+          <option>Journée Duo</option>
+          <option>Intervention en structure</option>
+          <option>Carte cadeau</option>
+          <option>Je ne sais pas encore — j'aimerais échanger</option>
+        </select>
+      </div>
+      <div class="fg"><label for="msg">Votre message</label><textarea id="msg" name="msg" placeholder="Ce qui vous amène, vos questions, votre disponibilité…"></textarea></div>
+      <p class="form-note">Ces informations sont utilisées uniquement pour répondre à votre demande et ne sont jamais partagées.</p>
+      <button type="button" class="btn btn-eau" id="sbtn" onclick="hs()">Envoyer ma demande →</button>
+    </div>
+  </div>
+
+  <footer>
+    <p class="ft-q">"Tu es aimée, tu es soutenue, tout est possible."</p>
+    <div class="ft-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('pratiques')">Pratiques</a><a onclick="go('tarifs')">Tarifs</a><a onclick="go('mentions')">Mentions légales</a></div>
+    <p class="ft-copy">© 2025 Racines et Résonances · Sandrine · Sud-Essonne, Dourdan</p>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     ■ MENTIONS LÉGALES
+══════════════════════════════════════════════════════ -->
+<div id="page-mentions" class="page">
+  <div class="legal-body">
+    <span class="lbl c-res">Mentions légales</span>
+    <h1>Mentions légales<br>&amp; informations</h1>
+    <div class="ls"><h2>Éditrice du site</h2><p>Sandrine — Racines et Résonances. Auto-entrepreneuse · Sud-Essonne, Dourdan (91)</p></div>
+    <div class="ls"><h2>Nature de l'activité</h2><p>Les pratiques proposées (bains sonores, massages sonores, soins chamaniques et énergétiques) sont des pratiques de bien-être et d'accompagnement personnel. Elles ne constituent pas des soins médicaux et ne remplacent pas un avis médical.</p><p>En cas de problème de santé, consultez un professionnel qualifié.</p></div>
+    <div class="ls"><h2>Consentement éclairé</h2><p>Un temps d'échange préalable à chaque soin permet de recueillir votre consentement éclairé. Vous pouvez interrompre une séance à tout moment.</p></div>
+    <div class="ls"><h2>Contre-indications (bains sonores)</h2><p>Par précaution, les bains sonores sont déconseillés en cas de : grossesse (1er trimestre), port de pacemaker, troubles cardiaques graves, épilepsie, opération récente. En cas de doute, consultez votre médecin avant de réserver.</p></div>
+    <div class="ls"><h2>Données personnelles</h2><p>Les informations recueillies via le formulaire de contact sont utilisées uniquement pour répondre à votre demande et ne sont jamais transmises à des tiers.</p></div>
+    <div class="ls"><h2>Hébergement</h2><p>Prototype statique. Les informations d'hébergement définitif seront complétées lors de la mise en ligne.</p></div>
+  </div>
+  <footer>
+    <p class="ft-q">"Tu es aimée, tu es soutenue, tout est possible."</p>
+    <div class="ft-links"><a onclick="go('accueil')">Accueil</a><a onclick="go('pratiques')">Pratiques</a><a onclick="go('contact')">Contact</a></div>
+    <p class="ft-copy">© 2025 Racines et Résonances · Sandrine · Sud-Essonne, Dourdan</p>
+  </footer>
+</div>
+
+<script>
+function go(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=document.getElementById('page-'+id);
+  if(pg){pg.classList.add('active');window.scrollTo({top:0,behavior:'smooth'});obs();}
+}
+function st(tab){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-c').forEach(c=>c.classList.remove('active'));
+  const t=document.getElementById('tc-'+tab),b=document.getElementById('btn-'+tab);
+  if(t)t.classList.add('active');
+  if(b)b.classList.add('active');
+}
+function tn(){document.getElementById('nl').classList.toggle('open')}
+function cn(){document.getElementById('nl').classList.remove('open')}
+function obs(){
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target);}});
+  },{threshold:.07,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.fu:not(.vis)').forEach(el=>io.observe(el));
+}
+async function hs(){
+  const btn=document.getElementById('sbtn');
+  const nom=document.getElementById('nom').value.trim();
+  const email=document.getElementById('email').value.trim();
+  const msg=document.getElementById('msg').value.trim();
+  if(!nom||!email||!msg){
+    alert('Merci de renseigner au minimum votre prénom, email et message.');
+    return;
+  }
+  btn.textContent='Envoi en cours…';
+  btn.disabled=true;
+  const data={
+    nom,email,
+    prestation:document.getElementById('prest').value,
+    message:msg,
+    _replyto:email,
+    _subject:'Nouvelle demande — Racines et Résonances'
+  };
+  try{
+    const r=await fetch('https://formspree.io/f/VOTRE_ID_FORMSPREE',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify(data)
+    });
+    if(r.ok){
+      btn.textContent='Message envoyé ✓';
+      btn.style.background='var(--terre)';
+      document.getElementById('nom').value='';
+      document.getElementById('email').value='';
+      document.getElementById('prest').value='';
+      document.getElementById('msg').value='';
+    } else {
+      btn.textContent='Erreur — réessayez';
+      btn.style.background='var(--feu)';
+      btn.disabled=false;
+    }
+  } catch(e){
+    btn.textContent='Erreur réseau — réessayez';
+    btn.style.background='var(--feu)';
+    btn.disabled=false;
+  }
+}
+document.addEventListener('DOMContentLoaded',()=>obs());
+</script>
+</body>
+</html>
