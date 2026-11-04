@@ -26,12 +26,12 @@ Elles sont toutes dans `v2/media/`, converties en WebP. Le dossier passe de 1,9 
 - dans la couleur de l'élément sur la carte cadeau ;
 - dans le brun-rouge d'origine (`--brique`, `#6E2B11`) sur l'écran de confirmation.
 
-Dans le héros, l'emblème éclot depuis son centre, respire lentement, et c'est de lui que partent les ondes. Il vibre quand on fait sonner le gong ou qu'on entre en écoute.
+Dans le héros, le logo est présenté en grand, à gauche, dans un **cartouche** : un cadre double à coins arrondis, qui reprend la forme du logo d'origine. Le cadre s'ouvre à l'arrivée, l'emblème éclot depuis son centre puis respire lentement, et les ondes dorées partent de lui pour traverser toute la page. Il vibre quand on fait sonner le gong ou qu'on entre en écoute. Le nom du cartouche est le titre principal de la page (pour les moteurs de recherche et les lecteurs d'écran).
 
 - `icone-32.png` et `icone-180.png` : l'emblème seul, sur le fond crème du logo, pour l'onglet du navigateur et l'écran d'accueil des téléphones (le nom serait illisible à cette taille).
 - `icone-512.png` : le logo complet, utilisé comme image d'aperçu lors d'un partage du lien.
 
-Le nom du logo s'écrit « Racines **et** Résonances ». Le grand titre de l'accueil garde « & Résonances » comme choix typographique : c'est à harmoniser si vous préférez la forme exacte du logo partout.
+Le nom s'écrit partout « Racines **et** Résonances », comme sur le logo.
 
 ## 3. Ce qui est créé par le code (aucun fichier à fournir)
 

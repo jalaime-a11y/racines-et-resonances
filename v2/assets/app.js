@@ -34,7 +34,7 @@ async function envoyer(donnees) {
   if (modeMaquette()) { await attendre(1100); return { demo: true }; }
   const r = await fetch(CONFIG.formEndpoint, {
     method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ ...donnees, _replyto: donnees.email, _subject: `Racines & Résonances — ${donnees.objet}` })
+    body: JSON.stringify({ ...donnees, _replyto: donnees.email, _subject: `Racines et Résonances — ${donnees.objet}` })
   });
   if (!r.ok) throw new Error('envoi');
   return { demo: false };
@@ -203,7 +203,7 @@ const Champ = {
   dessiner(t, fixe) {
     const { c, w, h } = this, dt = Math.min(50, t - (this.dernier || t)); this.dernier = t;
     c.clearRect(0, 0, w, h);
-    if (this.emb && !this.ox) this.taille();
+    if (this.emb) { const e = this.emb.getBoundingClientRect(), b = this.cv.getBoundingClientRect(); this.ox = e.left - b.left + e.width / 2; this.oy = e.top - b.top + e.height / 2; }
     const cx = (this.ox ?? w / 2) + this.px * 30, cy = (this.oy ?? h * .56) + this.py * 20, aplat = this.emb ? 1 : .42;
     if (!fixe && (!this.prochaine || t > this.prochaine)) { this.pulse(.45); this.prochaine = t + 2800; }
     if (fixe) [140, 240, 360, 500].forEach((r, i) => this.ondes.push({ r, a: .25 - i * .05, v: 0, w: 1 }));
@@ -1014,7 +1014,7 @@ function apresCadeau(r) {
 
 /* ═══ 8. ROUTEUR & DÉMARRAGE ═══════════════════════════════════ */
 const ROUTES = {
-  '':                  [pageAccueil, apresAccueil, 'Racines & Résonances — Sandrine · Soins sonores & chamaniques'],
+  '':                  [pageAccueil, apresAccueil, 'Racines et Résonances — Sandrine · Soins sonores & chamaniques'],
   'soins-sonores':     [pageSonores, null, 'Bains & massages sonores'],
   'soins-chamaniques': [pageChamaniques, null, 'Soins chamaniques & énergétiques'],
   'journee-duo':       [pageDuo, apresDuo, 'La Journée Duo'],
@@ -1039,7 +1039,7 @@ function router() {
   decouperMots(main); braises(main); apparitions(main); parallaxe(main); deroules(main); inclinaison(main);
   apres?.(main);
   const ev = nom === 'stage' && EVTS.find(e => e.id === arg);
-  document.title = ev ? `${ev.titre} — Racines & Résonances` : (nom ? `${titre} — Racines & Résonances` : titre);
+  document.title = ev ? `${ev.titre} — Racines et Résonances` : (nom ? `${titre} — Racines et Résonances` : titre);
   $$('.nav-liens a').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#/' + nom));
   fermerMenu(); fermerTiroir();
   scrollTo({ top: 0, behavior: 'instant' });
