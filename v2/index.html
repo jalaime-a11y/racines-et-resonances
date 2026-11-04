@@ -9,7 +9,10 @@
 <meta name="theme-color" content="#0E0C0A">
 <meta property="og:title" content="Racines & Résonances">
 <meta property="og:description" content="Un tambour, un souffle, une vibration — pour revenir à vous.">
-<meta property="og:image" content="media/ponton.webp">
+<meta property="og:image" content="media/logo/icone-512.png">
+<link rel="icon" type="image/png" sizes="32x32" href="media/logo/icone-32.png">
+<link rel="apple-touch-icon" href="media/logo/icone-180.png">
+<link rel="preload" as="image" href="media/logo/embleme.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300&family=Karla:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
@@ -21,7 +24,7 @@
 
 <!-- ── NAVIGATION ─────────────────────────────────────────── -->
 <header class="nav" id="nav">
-  <a class="logo" href="#/">Racines <i>&amp;</i> Résonances</a>
+  <a class="logo" href="#/" aria-label="Racines et Résonances — accueil"><span class="embleme" aria-hidden="true"></span><span class="nom-logo" aria-hidden="true"></span></a>
   <ul class="nav-liens">
     <li><a href="#/soins-sonores">Bains sonores</a></li>
     <li><a href="#/soins-chamaniques">Soins chamaniques</a></li>
@@ -60,7 +63,7 @@
   <div class="wrap">
     <div class="pied-grille">
       <div>
-        <a class="logo" href="#/">Racines <i>&amp;</i> Résonances</a>
+        <a class="logo" href="#/" aria-label="Racines et Résonances — accueil"><span class="embleme" aria-hidden="true"></span><span class="nom-logo" aria-hidden="true"></span></a>
         <p style="margin-top:1rem;font-size:.92rem">Pratiques chamaniques & sonores avec Sandrine.<br>Sud-Essonne · Dourdan et alentours.</p>
       </div>
       <div><h4>Les soins</h4><ul>
@@ -109,6 +112,7 @@
     <div class="brume" aria-hidden="true"></div>
     <canvas id="champ" aria-hidden="true"></canvas>
     <div class="heros-contenu">
+      <div class="heros-embleme" id="heros-embleme" aria-hidden="true"><span class="embleme"></span></div>
       <p class="sur rv">Pratiques chamaniques & sonores · Sud-Essonne</p>
       <h1 class="mots" data-mots>Racines <span class="l2">& Résonances</span></h1>
       <p class="accroche rv" data-d="3">Un tambour, un souffle, une vibration — pour revenir à vous quand la vie s'est figée.</p>
@@ -267,7 +271,7 @@
     <div class="wrap cadeau-teaser">
       <div class="carte-pile rv">
         <div class="carte" data-el="eau" data-tilt>
-          <div class="c-haut"><span class="c-logo">Racines <i>&</i> Résonances</span><span class="c-tag">Carte cadeau</span></div>
+          <div class="c-haut"><span class="c-logo" aria-label="Racines et Résonances"><span class="embleme"></span><span class="nom-logo"></span></span><span class="c-tag">Carte cadeau</span></div>
           <div><div class="c-titre">Un bain sonore<br>rien que pour toi</div><div class="c-msg">« Pour que tu prennes enfin le temps de te poser. »</div></div>
           <div class="c-bas"><span>Pour Claire<br>de la part de Léa</span><b>80 €</b></div>
         </div>
@@ -293,6 +297,7 @@
 
   <!-- FINALE -->
   <section class="finale" data-onde>
+    <span class="embleme finale-embleme" aria-hidden="true"></span>
     <div class="wrap">
       <h2 class="mots" data-mots>Tu es aimée. Tu es soutenue. <em>Tout est possible.</em></h2>
       <div class="rv" style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;position:relative">
