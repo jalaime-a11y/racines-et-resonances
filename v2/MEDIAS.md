@@ -26,7 +26,7 @@ Elles sont toutes dans `v2/media/`, converties en WebP. Le dossier passe de 1,9 
 - dans la couleur de l'élément sur la carte cadeau ;
 - dans le brun-rouge d'origine (`--brique`, `#6E2B11`) sur l'écran de confirmation.
 
-Dans le héros, le logo est présenté en grand, à gauche, dans un **cartouche** : un cadre double à coins arrondis, qui reprend la forme du logo d'origine. Le cadre s'ouvre à l'arrivée, l'emblème éclot depuis son centre puis respire lentement, et les ondes dorées partent de lui pour traverser toute la page. Il vibre quand on fait sonner le gong ou qu'on entre en écoute. Le nom du cartouche est le titre principal de la page (pour les moteurs de recherche et les lecteurs d'écran).
+Dans le héros, l'emblème est démesuré, sans cadre : décalé à gauche, il déborde de l'écran en haut, en bas et sur le côté, si bien qu'on en devine la forme plus qu'on ne la voit en entier. Ses bords s'estompent sous la navigation et vers le texte, pour rester lisibles. Il éclot depuis son centre puis respire lentement, les ondes dorées partent de lui, et il vibre quand on fait sonner le gong ou qu'on entre en écoute. À droite, le nom du logo est le titre principal de la page.
 
 - `icone-32.png` et `icone-180.png` : l'emblème seul, sur le fond crème du logo, pour l'onglet du navigateur et l'écran d'accueil des téléphones (le nom serait illisible à cette taille).
 - `icone-512.png` : le logo complet, utilisé comme image d'aperçu lors d'un partage du lien.
