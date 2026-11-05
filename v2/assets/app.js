@@ -326,6 +326,31 @@ function braises(racine) {
   $$('[data-braises]', racine).forEach(m => {
     m.innerHTML = Array.from({ length: 16 }, () => `<i style="left:${Math.random() * 100}%;--dx:${(Math.random() - .5) * 80}px;animation-duration:${5 + Math.random() * 6}s;animation-delay:${-Math.random() * 10}s"></i>`).join('');
   });
+  // Terre : trois systèmes de racines qui poussent depuis le haut, en décalé
+  $$('.motif-terre', racine).forEach(m => {
+    const chemins = [];
+    const pousser = (x, y, a, long, ep, prof, retard) => {
+      const pts = [[x, y]], n = 7;
+      for (let i = 0; i < n; i++) { a += (Math.random() - .5) * .55; x += Math.cos(a) * long / n; y += Math.sin(a) * long / n; pts.push([x, y]); }
+      let d = `M${pts[0][0].toFixed(1)} ${pts[0][1].toFixed(1)}`;
+      for (let i = 1; i < pts.length - 1; i++) d += ` Q${pts[i][0].toFixed(1)} ${pts[i][1].toFixed(1)} ${((pts[i][0] + pts[i + 1][0]) / 2).toFixed(1)} ${((pts[i][1] + pts[i + 1][1]) / 2).toFixed(1)}`;
+      chemins.push(`<path d="${d}" pathLength="1" stroke-width="${ep.toFixed(2)}" style="animation-delay:${(retard + prof * .7).toFixed(2)}s"/>`);
+      if (prof < 3) for (let k = 0; k < 2; k++) { const j = 2 + Math.floor(Math.random() * 4); pousser(pts[j][0], pts[j][1], a + (Math.random() - .5) * 1.5, long * .55, ep * .62, prof + 1, retard); }
+    };
+    [[60, 0], [100, -3.3], [140, -6.6]].forEach(([x, r]) => pousser(x + (Math.random() - .5) * 20, -4, Math.PI / 2 + (Math.random() - .5) * .5, 170 + Math.random() * 60, 1.8, 0, r));
+    m.innerHTML = `<svg viewBox="0 0 200 400" preserveAspectRatio="xMidYMin slice" aria-hidden="true">${chemins.join('')}</svg>`;
+  });
+  // Souffle : rafales (traits qui filent et s'enroulent) et plumes emportées
+  $$('.motif-air', racine).forEach(m => {
+    const rafales = Array.from({ length: 7 }, (_, k) => {
+      const y = 40 + k * 46 + Math.random() * 20, h = 10 + Math.random() * 14;
+      return `<path class="rafale" pathLength="1" d="M-40 ${y} C 40 ${y - h}, 110 ${y + h}, 180 ${y} S 260 ${y - h} 300 ${y - 4} c 18 -3 24 -20 10 -26 c -10 -4 -18 6 -11 12" style="animation-duration:${3.2 + Math.random() * 2.6}s;animation-delay:${-Math.random() * 5}s"/>`;
+    }).join('');
+    const plume = '<svg viewBox="0 0 48 48"><path d="M39 7C23 9 13 21 12.6 35.4L8 41"/><path d="M39 7c-1.8 14.6-12 24.6-26.4 28.4"/><path d="M17.4 30.4l7.2-.8M21.4 24.2l8-1M25.6 18.2l7.8-1.2"/></svg>';
+    const plumes = [0, 1, 2].map(k => `<span class="plume-vol" style="top:${18 + k * 24}%;animation-duration:${9 + k * 2.5}s;animation-delay:${-k * 3.4}s">${plume}</span>`).join('');
+    m.innerHTML = `<svg class="vent" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">${rafales}</svg>${plumes}`;
+    const maj = () => m.style.setProperty('--w', m.offsetWidth + 'px'); maj(); addEventListener('resize', maj);
+  });
 }
 
 /* ═══ 4. ACCUEIL ═══════════════════════════════════════════════ */

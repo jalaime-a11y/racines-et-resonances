@@ -337,7 +337,7 @@ function braises(racine) {
       chemins.push(`<path d="${d}" pathLength="1" stroke-width="${ep.toFixed(2)}" style="animation-delay:${(retard + prof * .7).toFixed(2)}s"/>`);
       if (prof < 3) for (let k = 0; k < 2; k++) { const j = 2 + Math.floor(Math.random() * 4); pousser(pts[j][0], pts[j][1], a + (Math.random() - .5) * 1.5, long * .55, ep * .62, prof + 1, retard); }
     };
-    [[60, 0], [100, -3.3], [140, -6.6]].forEach(([x, r]) => pousser(x + (Math.random() - .5) * 20, -4, Math.PI / 2 + (Math.random() - .5) * .5, 170 + Math.random() * 60, 2.4, 0, r));
+    [[60, 0], [100, -3.3], [140, -6.6]].forEach(([x, r]) => pousser(x + (Math.random() - .5) * 20, -4, Math.PI / 2 + (Math.random() - .5) * .5, 170 + Math.random() * 60, 1.8, 0, r));
     m.innerHTML = `<svg viewBox="0 0 200 400" preserveAspectRatio="xMidYMin slice" aria-hidden="true">${chemins.join('')}</svg>`;
   });
   // Souffle : rafales (traits qui filent et s'enroulent) et plumes emportées

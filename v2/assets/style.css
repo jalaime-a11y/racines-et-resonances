@@ -212,11 +212,17 @@ strong{font-weight:400;color:var(--lin)}
 .motif-feu i{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:var(--feu);box-shadow:0 0 8px 2px rgba(228,112,58,.6);animation:braise linear infinite;opacity:0}
 @keyframes braise{0%{transform:translate(0,0);opacity:0}10%{opacity:1}100%{transform:translate(var(--dx,20px),-90vh);opacity:0}}
 /* terre : battement lent du sol */
-.motif-terre::before{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:radial-gradient(ellipse at 50% 100%,rgba(203,156,106,.35),transparent 70%);animation:sol 6s ease-in-out infinite}
-@keyframes sol{0%,100%{opacity:.4;transform:scaleY(.9)}50%{opacity:1;transform:scaleY(1.05)}}
-/* souffle : plume qui flotte */
-.motif-air::before{content:"";position:absolute;left:45%;top:20%;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle,rgba(201,191,227,.5),transparent 70%);filter:blur(4px);animation:flotte 9s ease-in-out infinite}
-@keyframes flotte{0%,100%{transform:translate(-40px,0)}50%{transform:translate(40px,60px)}}
+/* terre : des racines poussent, se ramifient, s'effacent, repoussent */
+.motif-terre svg{position:absolute;inset:0;width:100%;height:100%}
+.motif-terre path{fill:none;stroke:var(--el);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:pousse 10s var(--ease) infinite}
+@keyframes pousse{0%{stroke-dashoffset:1;opacity:.68}42%{stroke-dashoffset:0;opacity:.68}78%{stroke-dashoffset:0;opacity:.68}100%{stroke-dashoffset:0;opacity:0}}
+/* souffle : des rafales traversent, des plumes s'envolent */
+.motif-air svg.vent{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.motif-air .rafale{fill:none;stroke:var(--el);stroke-width:1.8;filter:drop-shadow(0 0 2px rgba(40,20,60,.3));stroke-linecap:round;stroke-dasharray:.22 1;stroke-dashoffset:1.22;animation:rafale linear infinite}
+@keyframes rafale{0%{stroke-dashoffset:1.22;opacity:0}12%{opacity:.72}88%{opacity:.72}100%{stroke-dashoffset:0;opacity:0}}
+.motif-air .plume-vol{position:absolute;left:0;width:38px;height:38px;filter:drop-shadow(0 0 2px rgba(40,20,60,.25));color:var(--el);animation:vol linear infinite;opacity:0}
+.motif-air .plume-vol svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@keyframes vol{0%{transform:translate(-30%,30px) rotate(-30deg);opacity:0}12%{opacity:.72}50%{transform:translate(calc(var(--w,300px) * .5),-40px) rotate(28deg)}88%{opacity:.72}100%{transform:translate(calc(var(--w,300px) + 40px),10px) rotate(-12deg);opacity:0}}
 
 /* ─── ÉCOUTER (gong interactif) ─────────────────────────────── */
 .ecoute{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center}
