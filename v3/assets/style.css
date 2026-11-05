@@ -269,8 +269,8 @@ strong{font-weight:400;color:var(--lin)}
 .porte-texte{display:grid;grid-template-columns:auto 1fr;gap:.2rem 1rem;align-items:center;padding:1.4rem .2rem 0}
 .porte-texte .porte-ico{width:54px;height:54px;margin:0;color:var(--el)}
 .porte-texte .elnom{display:block;margin-bottom:.2rem}
-.porte-texte h3{font-size:clamp(1.3rem,1.9vw,1.9rem);white-space:normal}
-.porte-texte p{grid-column:1/-1;margin:.9rem 0 .6rem;font-size:.95rem;max-width:40ch;color:var(--lin-2)}
+.porte-texte h3{font-size:clamp(1.3rem,1.9vw,1.9rem);white-space:normal;width:6em}
+.porte-texte p{grid-column:1/-1;margin:.9rem 0 .6rem;font-size:.95rem;width:21ch;max-width:none;color:var(--lin-2)}
 .porte-texte .prix{grid-column:1/-1;color:var(--el);font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em}
 
 /* ─── ÉCOUTER (gong interactif) ─────────────────────────────── */
@@ -602,6 +602,8 @@ strong{font-weight:400;color:var(--lin)}
   .portes{flex-direction:column;height:auto}
   .porte{min-height:0;flex:none!important}
   .arche{height:280px;border-radius:999px 999px 10px 10px}
+  .porte-texte h3{width:auto}
+  .porte-texte p{width:auto;max-width:40ch}
   .porte .plus{max-height:none;opacity:1}
   .porte .num{display:none}
   .temoins{grid-template-columns:1fr}
