@@ -215,14 +215,14 @@ strong{font-weight:400;color:var(--lin)}
 /* terre : des racines poussent, se ramifient, s'effacent, repoussent */
 .motif-terre svg{position:absolute;inset:0;width:100%;height:100%}
 .motif-terre path{fill:none;stroke:var(--el);stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:pousse 10s var(--ease) infinite}
-@keyframes pousse{0%{stroke-dashoffset:1;opacity:.95}42%{stroke-dashoffset:0;opacity:.95}78%{stroke-dashoffset:0;opacity:.95}100%{stroke-dashoffset:0;opacity:0}}
+@keyframes pousse{0%{stroke-dashoffset:1;opacity:.68}42%{stroke-dashoffset:0;opacity:.68}78%{stroke-dashoffset:0;opacity:.68}100%{stroke-dashoffset:0;opacity:0}}
 /* souffle : des rafales traversent, des plumes s'envolent */
 .motif-air svg.vent{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
-.motif-air .rafale{fill:none;stroke:var(--el);stroke-width:2.2;filter:drop-shadow(0 0 3px rgba(40,20,60,.45));stroke-linecap:round;stroke-dasharray:.22 1;stroke-dashoffset:1.22;animation:rafale linear infinite}
-@keyframes rafale{0%{stroke-dashoffset:1.22;opacity:0}12%{opacity:1}88%{opacity:1}100%{stroke-dashoffset:0;opacity:0}}
-.motif-air .plume-vol{position:absolute;left:0;width:42px;height:42px;filter:drop-shadow(0 0 3px rgba(40,20,60,.5));color:var(--el);animation:vol linear infinite;opacity:0}
+.motif-air .rafale{fill:none;stroke:var(--el);stroke-width:1.8;filter:drop-shadow(0 0 2px rgba(40,20,60,.3));stroke-linecap:round;stroke-dasharray:.22 1;stroke-dashoffset:1.22;animation:rafale linear infinite}
+@keyframes rafale{0%{stroke-dashoffset:1.22;opacity:0}12%{opacity:.72}88%{opacity:.72}100%{stroke-dashoffset:0;opacity:0}}
+.motif-air .plume-vol{position:absolute;left:0;width:38px;height:38px;filter:drop-shadow(0 0 2px rgba(40,20,60,.25));color:var(--el);animation:vol linear infinite;opacity:0}
 .motif-air .plume-vol svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-@keyframes vol{0%{transform:translate(-30%,30px) rotate(-30deg);opacity:0}12%{opacity:.95}50%{transform:translate(calc(var(--w,300px) * .5),-40px) rotate(28deg)}88%{opacity:.95}100%{transform:translate(calc(var(--w,300px) + 40px),10px) rotate(-12deg);opacity:0}}
+@keyframes vol{0%{transform:translate(-30%,30px) rotate(-30deg);opacity:0}12%{opacity:.72}50%{transform:translate(calc(var(--w,300px) * .5),-40px) rotate(28deg)}88%{opacity:.72}100%{transform:translate(calc(var(--w,300px) + 40px),10px) rotate(-12deg);opacity:0}}
 
 /* ─── ÉCOUTER (gong interactif) ─────────────────────────────── */
 .ecoute{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center}
