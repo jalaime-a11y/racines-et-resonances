@@ -201,6 +201,8 @@ strong{font-weight:400;color:var(--lin)}
 .porte:hover .plus,.porte:focus-visible .plus{max-height:220px;opacity:1}
 .porte .plus p{margin:.9rem 0 1.1rem;font-size:.95rem;max-width:36ch}
 .porte .prix{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;color:var(--lin-2)}
+.porte-ico{width:clamp(54px,5vw,72px);height:clamp(54px,5vw,72px);margin-bottom:1rem;transition:transform 1s var(--ease)}
+.porte:hover .porte-ico{transform:scale(1.08) rotate(-6deg)}
 .motif{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.8}
 /* eau : ondes */
 .motif-eau::before,.motif-eau::after{content:"";position:absolute;left:50%;top:42%;width:40px;height:40px;margin:-20px;border:1px solid var(--eau);border-radius:50%;animation:onde 5s var(--ease) infinite;opacity:0}
@@ -516,6 +518,24 @@ strong{font-weight:400;color:var(--lin)}
 .clic-onde{position:fixed;width:16px;height:16px;margin:-8px;border-radius:50%;border:1px solid var(--or);pointer-events:none;z-index:950;animation:clic .9s var(--ease) forwards}
 @keyframes clic{0%{transform:scale(.3);opacity:.9}100%{transform:scale(5);opacity:0}}
 
+ /* ─── ICÔNES « SCEAU » ───────────────────────────────────────── */
+.ico{display:block;flex:none;width:44px;height:44px;color:var(--el);overflow:visible}
+.clair .ico{color:color-mix(in srgb,var(--el) 62%,var(--encre))}
+.evt{grid-template-columns:110px 56px 1fr auto}
+.evt-ico{width:52px;height:52px;transition:transform .8s var(--ease)}
+.evt:hover .evt-ico{transform:rotate(-8deg) scale(1.06)}
+.quiz-ico{width:96px;height:96px;margin:0 auto 1.2rem}
+.page-heros .infos .info{display:flex;gap:.8rem;align-items:center}
+.page-heros .infos .ico{width:42px;height:42px}
+.carte-ico{width:64px;height:64px;margin-bottom:1.2rem}
+.grille-outils{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--trait);border:1px solid var(--trait)}
+.dl-ico{grid-template-columns:34px auto 1fr!important;align-items:center}
+.dl-ico .ico{width:32px;height:32px}
+.contact-info{display:grid;grid-template-columns:52px 1fr;column-gap:1rem;align-items:center}
+.contact-info .ico{grid-row:span 2;width:50px;height:50px}
+.opt .opt-ico{width:38px;height:38px;color:color-mix(in srgb,var(--el) 62%,var(--encre))}
+.opt[aria-pressed="true"] .opt-ico{color:var(--encre)}
+
 /* ─── RESPONSIVE ────────────────────────────────────────────── */
 @media (max-width:1080px){
   .nav-liens{display:none}
@@ -527,7 +547,9 @@ strong{font-weight:400;color:var(--lin)}
   .portes{flex-direction:column;height:auto}
   .porte{min-height:300px;flex:none!important}
   .porte .plus{max-height:none;opacity:1}
+  .porte .num{display:none}
   .temoins{grid-template-columns:1fr}
+  .grille-outils{grid-template-columns:1fr 1fr}
   .encart,.config-apercu{position:relative;top:0}
   .config-apercu{order:-1}
   .barre-mobile{display:flex}
@@ -542,6 +564,8 @@ strong{font-weight:400;color:var(--lin)}
 @media (max-width:560px){
   .quiz-r,.choix-2,.rangee{grid-template-columns:1fr}
   .evt{grid-template-columns:72px 1fr}
+  .evt-ico{display:none}
+  .grille-outils{grid-template-columns:1fr}
   .evt-date b{font-size:2.2rem}
   .evt-prix{grid-column:2;text-align:left}
   .pied-grille{grid-template-columns:1fr}

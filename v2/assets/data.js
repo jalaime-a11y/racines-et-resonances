@@ -33,22 +33,22 @@ const ELEMENTS = {
    mode : 'creneau' (heure précise) · 'jour' (journée entière)
           'groupe' (date + nombre de personnes) · 'devis'          */
 const PRESTATIONS = [
-  { id: 'bain-individuel', element: 'eau', page: 'soins-sonores', mode: 'creneau',
+  { id: 'bain-individuel', element: 'eau', icone: 'bol', page: 'soins-sonores', mode: 'creneau',
     nom: 'Bain sonore individuel', duree: '1 h 15', prix: 80,
     accroche: 'Allongé·e, couvert·e, vous n\'avez rien à faire qu\'écouter.' },
-  { id: 'massage-sonore', element: 'eau', page: 'soins-sonores', mode: 'creneau',
+  { id: 'massage-sonore', element: 'eau', icone: 'eau', page: 'soins-sonores', mode: 'creneau',
     nom: 'Massage sonore', duree: '1 h 15', prix: 80,
     accroche: 'Les bols posés sur le corps : la vibration devient sensation.' },
-  { id: 'bain-collectif-prive', element: 'eau', page: 'soins-sonores', mode: 'groupe',
+  { id: 'bain-collectif-prive', element: 'eau', icone: 'gong', page: 'soins-sonores', mode: 'groupe',
     nom: 'Bain sonore entre proches', duree: '2 h', prix: 25, unite: '/pers.', min: 2, max: 6,
     accroche: 'De 2 à 6 personnes, chez moi : un bain rien que pour votre groupe.' },
-  { id: 'soin-chamanique', element: 'feu', page: 'soins-chamaniques', mode: 'creneau',
+  { id: 'soin-chamanique', element: 'feu', icone: 'tambour', page: 'soins-chamaniques', mode: 'creneau',
     nom: 'Soin chamanique & énergétique', duree: '1 h 15', prix: 80,
     accroche: 'Le tambour ouvre la porte. Le soin se construit dans l\'instant.' },
-  { id: 'journee-duo', element: 'terre', page: 'journee-duo', mode: 'jour',
+  { id: 'journee-duo', element: 'terre', icone: 'duo', page: 'journee-duo', mode: 'jour',
     nom: 'Journée Duo', duree: '10 h – 17 h', prix: 350, unite: ' le duo',
     accroche: 'Une journée entière à deux, entre amies, hors du temps.' },
-  { id: 'structure', element: 'air', page: 'contact', mode: 'devis',
+  { id: 'structure', element: 'air', icone: 'structure', page: 'contact', mode: 'devis',
     nom: 'Intervention en structure', duree: 'Sur mesure', prix: null,
     accroche: 'Associations, crèches, EHPAD : des bains sonores adaptés à tous les publics.' }
 ];
@@ -143,7 +143,7 @@ const EVENEMENTS = [   // À VALIDER : dates, horaires, prix, jauges
     lieu: 'Chez Sandrine · Sud-Essonne', ref: 'bain-collectif-novembre'
   },
   {
-    id: 'stage-voix', type: 'stage', element: 'air', image: 'fleur',
+    id: 'stage-voix', type: 'stage', element: 'air', icone: 'voix', image: 'fleur',
     titre: 'Éveiller sa voix', sousTitre: 'Stage d\'une journée · libération de la voix',
     date: '2027-01-24', debut: '10:00', fin: '17:00', prix: 110, acompte: 40, places: 8,
     lieu: 'Chez Sandrine · Sud-Essonne',
@@ -163,7 +163,7 @@ const EVENEMENTS = [   // À VALIDER : dates, horaires, prix, jauges
     pourQui: 'Celles et ceux qui « ne savent pas chanter », qu\'on a fait taire, ou qui sentent que leur voix a quelque chose à dire. Aucune expérience requise.'
   },
   {
-    id: 'stage-voyage', type: 'stage', element: 'feu', image: 'tambour-hochet',
+    id: 'stage-voyage', type: 'stage', element: 'feu', icone: 'tambour', image: 'tambour-hochet',
     titre: 'Voyage au tambour', sousTitre: 'Stage d\'initiation · rencontrer son animal de pouvoir',
     date: '2027-03-13', debut: '10:00', fin: '17:00', prix: 120, acompte: 40, places: 8,
     lieu: 'Chez Sandrine et en forêt proche · Sud-Essonne',
@@ -202,23 +202,23 @@ const EVENEMENTS = [   // À VALIDER : dates, horaires, prix, jauges
 ];
 
 const TYPES_EVENEMENT = {
-  cercle:    { nom: 'Cercle de femmes', pluriel: 'Cercles' },
-  ceremonie: { nom: 'Cérémonie',        pluriel: 'Cérémonies' },
-  stage:     { nom: 'Stage',            pluriel: 'Stages' },
-  bain:      { nom: 'Bain collectif',   pluriel: 'Bains collectifs' }
+  cercle:    { nom: 'Cercle de femmes', pluriel: 'Cercles', icone: 'lune' },
+  ceremonie: { nom: 'Cérémonie',        pluriel: 'Cérémonies', icone: 'saisons' },
+  stage:     { nom: 'Stage',            pluriel: 'Stages', icone: 'plume' },
+  bain:      { nom: 'Bain collectif',   pluriel: 'Bains collectifs', icone: 'bol' }
 };
 
 /* ── CARTE CADEAU ─────────────────────────────────────────────── */
 const CADEAU = {
   validiteMois: 12,          // À VALIDER
   experiences: [
-    { id: 'bain',   nom: 'Bain sonore individuel',          prix: 80,  element: 'eau' },
-    { id: 'massage',nom: 'Massage sonore',                  prix: 80,  element: 'eau' },
-    { id: 'soin',   nom: 'Soin chamanique & énergétique',   prix: 80,  element: 'feu' },
-    { id: 'carte3', nom: 'Carte 3 séances au choix',        prix: 225, element: 'eau' },
-    { id: 'duo',    nom: 'Journée Duo',                     prix: 350, element: 'terre' },
-    { id: 'cercle', nom: 'Cercle de la Lune Nouvelle',      prix: 30,  element: 'air' },
-    { id: 'libre',  nom: 'Montant libre',                   prix: null, element: 'air' }
+    { id: 'bain',   nom: 'Bain sonore individuel',          prix: 80,  element: 'eau', icone: 'bol' },
+    { id: 'massage',nom: 'Massage sonore',                  prix: 80,  element: 'eau', icone: 'eau' },
+    { id: 'soin',   nom: 'Soin chamanique & énergétique',   prix: 80,  element: 'feu', icone: 'tambour' },
+    { id: 'carte3', nom: 'Carte 3 séances au choix',        prix: 225, element: 'eau', icone: 'gong' },
+    { id: 'duo',    nom: 'Journée Duo',                     prix: 350, element: 'terre', icone: 'duo' },
+    { id: 'cercle', nom: 'Cercle de la Lune Nouvelle',      prix: 30,  element: 'air', icone: 'lune' },
+    { id: 'libre',  nom: 'Montant libre',                   prix: null, element: 'air', icone: 'cadeau' }
   ],
   livraisons: [            // À VALIDER
     { id: 'email', nom: 'E-carte par email', detail: 'PDF à imprimer ou à transférer · immédiat après paiement', prix: 0 },

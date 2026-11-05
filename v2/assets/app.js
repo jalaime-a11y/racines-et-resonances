@@ -22,6 +22,9 @@ const heure = h => h.replace(':', ' h ').replace(' h 00', ' h');
 const attendre = ms => new Promise(r => setTimeout(r, ms));
 const aujourdhui = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
 const img = n => `media/${n}.webp`;
+// Icônes « sceau » : un seul fichier (assets/icones.svg), couleur héritée du texte (var(--el))
+const ico = (id, cls = '') => `<svg class="ico${cls ? ' ' + cls : ''}" aria-hidden="true"><use href="assets/icones.svg#${id}"/></svg>`;
+const ICO_INFO = { 'Durée': 'duree', 'Tarif': 'tarif', 'Lieu': 'lieu', 'Pour': 'groupe', 'Groupe': 'groupe', 'Horaires': 'horaire', 'Date': 'calendrier', 'Cadre': 'lieu' };
 const modeMaquette = () => /VOTRE_ID/.test(CONFIG.formEndpoint);
 
 // Événements : un événement avec `ref` hérite du contenu de l'événement de référence.
@@ -330,6 +333,7 @@ function ligneEvt(e) {
   const t = TYPES_EVENEMENT[e.type];
   return `<a class="evt" data-el="${e.element}" href="#/stage/${e.id}">
     <div class="evt-date"><b>${fmt(e.date, { day: '2-digit' })}</b><span>${fmt(e.date, { month: 'short' }).replace('.', '')} · ${fmt(e.date, { weekday: 'short' }).replace('.', '')}</span></div>
+    ${ico(e.icone || t.icone, 'evt-ico')}
     <div><div class="evt-type">${t.nom}</div><h3>${esc(e.titre)}</h3><div class="meta">${esc(e.sousTitre)} · ${heure(e.debut)} – ${heure(e.fin)}</div></div>
     <div class="evt-prix">${euros(e.prix)}<br><span class="lien">Réserver →</span></div>
   </a>`;
@@ -361,6 +365,7 @@ function quiz(el) {
   const resultat = () => {
     const el2 = Object.entries(score).sort((a, b) => b[1] - a[1])[0][0], r = QUIZ_RESULTATS[el2];
     el.innerHTML = `<div class="quiz-etape on"><div class="quiz-res" data-el="${el2}">
+      ${ico(el2 === 'air' ? 'souffle' : el2, 'quiz-ico')}
       <span class="lbl" style="justify-content:center">Votre porte · ${ELEMENTS[el2].nom}</span>
       <h3>${r.titre}</h3><p>${r.texte}</p>
       <div class="ctas">${r.resa ? `<button class="btn btn-el" data-resa="${r.resa}">Réserver</button>` : ''}
@@ -415,7 +420,7 @@ const heros = ({ el, fond, lbl, titre, chapo, infos = [], ctas = '' }) => `
       <span class="lbl rv">${lbl}</span>
       <h1 class="mots" data-mots>${titre}</h1>
       ${chapo ? `<p class="chapo rv" data-d="2">${chapo}</p>` : ''}
-      ${infos.length ? `<div class="infos rv" data-d="3">${infos.map(([k, v]) => `<div><b>${k}</b>${v}</div>`).join('')}</div>` : ''}
+      ${infos.length ? `<div class="infos rv" data-d="3">${infos.map(([k, v]) => `<div class="info">${ICO_INFO[k] ? ico(ICO_INFO[k]) : ''}<div><b>${k}</b>${v}</div></div>`).join('')}</div>` : ''}
       ${ctas ? `<div class="ctas rv" data-d="4">${ctas}</div>` : ''}
     </div>
   </section>`;
@@ -492,12 +497,12 @@ function pageSonores() {
 }
 
 function pageChamaniques() {
-  const outils = [['Tambour', 'Il ouvre toujours la porte. Son battement régulier apaise le mental et soutient le voyage.'],
-    ['Voyage chamanique', 'Au son du tambour, je voyage pour vous à la rencontre de ce qui demande à être vu.'],
-    ['Animal de pouvoir', 'Un allié se présente parfois. Vous apprendrez à le retrouver seul·e.'],
-    ['Pendule', 'Pour sentir où l\'énergie circule, et où elle se retient.'],
-    ['Kila', 'Le poignard rituel himalayen, pour trancher les liens qui ne vous servent plus.'],
-    ['Chant', 'La voix porte ce que les mots ne savent pas dire.']];
+  const outils = [['tambour', 'Tambour', 'Il ouvre toujours la porte. Son battement régulier apaise le mental et soutient le voyage.'],
+    ['voyage', 'Voyage chamanique', 'Au son du tambour, je voyage pour vous à la rencontre de ce qui demande à être vu.'],
+    ['animal', 'Animal de pouvoir', 'Un allié se présente parfois. Vous apprendrez à le retrouver seul·e.'],
+    ['pendule', 'Pendule', 'Pour sentir où l\'énergie circule, et où elle se retient.'],
+    ['kila', 'Kila', 'Le poignard rituel himalayen, pour trancher les liens qui ne vous servent plus.'],
+    ['voix', 'Chant', 'La voix porte ce que les mots ne savent pas dire.']];
   return heros({ el: 'feu', fond: 'autel-tambour', lbl: '02 · Élément Feu', titre: 'Voyager vers ce qui <em>demande à guérir</em>',
     chapo: 'Tambour, voyage chamanique, animal de pouvoir. Il n\'y a pas de déroulé écrit d\'avance : chaque soin se construit dans l\'instant, guidé par ce qui se présente pour vous.',
     infos: [['Durée', '1 h 15'], ['Tarif', '80 €'], ['Lieu', 'Sud-Essonne'], ['Pour', 'Les passages de vie']],
@@ -510,8 +515,8 @@ function pageChamaniques() {
       'Vous cherchez un accompagnement respectueux, sans emprise.'], 'tambour-hochet', 'Tambour chamanique, hochet et plume')
   + `<section class="sect" data-el="feu" style="background:linear-gradient(var(--nuit),var(--feu-n),var(--nuit))"><div class="wrap">
       <span class="lbl rv">Les outils du soin</span><h2 class="rv" data-d="1" style="margin-bottom:3rem">Six présences, <em>une écoute.</em></h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--trait);border:1px solid var(--trait)">
-      ${outils.map(([t, p], k) => `<div class="rv" data-d="${k % 3 + 1}" style="background:var(--nuit);padding:2rem"><span class="mono" style="color:var(--feu)">${String(k + 1).padStart(2, '0')}</span><h3 style="margin:.8rem 0 .6rem">${t}</h3><p style="font-size:.95rem">${p}</p></div>`).join('')}
+      <div class="grille-outils">
+      ${outils.map(([i, t, p], k) => `<div class="rv" data-d="${k % 3 + 1}" style="background:var(--nuit);padding:2rem">${ico(i, 'carte-ico')}<h3 style="margin:.8rem 0 .6rem">${t}</h3><p style="font-size:.95rem">${p}</p></div>`).join('')}
       </div></div></section>`
   + deroule('Un soin, <em>pas à pas</em>', [
       ['Une tisane, une parole', 'Nous prenons le temps d\'échanger : ce qui vous amène, votre intention pour la séance.'],
@@ -593,11 +598,11 @@ function pageStages() {
   + `<section class="sect"><div class="wrap">
       <span class="lbl rv">La roue de l'année</span><h2 class="rv" data-d="1" style="margin-bottom:3rem">Quatre <em>formats</em> pour se rassembler</h2>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
-      ${[['air', 'Cercles de femmes', 'Chaque lune nouvelle', 'Parole, chant et tambour, pour déposer ce qui s\'achève et semer une intention. 2 h 30, 30 €.'],
-         ['feu', 'Cérémonies des saisons', 'Solstices & équinoxes', 'Quatre fois par an, un rituel collectif pour accompagner le passage d\'une saison à l\'autre.'],
-         ['terre', 'Stages d\'une journée', 'Voix · voyage au tambour', 'Pour apprendre, expérimenter et repartir avec une pratique à poursuivre chez soi.'],
-         ['eau', 'Bains collectifs', 'Un samedi par mois', 'Deux heures allongé·e, en petit groupe de 6, au milieu des bols et du gong. 25 €.']]
-        .map(([el, t, q, p], k) => `<div class="rv" data-d="${k + 1}" data-el="${el}" style="padding:2rem;border:1px solid var(--trait);border-radius:4px;background:radial-gradient(ellipse at 100% 0%,color-mix(in srgb,var(--el) 14%,transparent),transparent 60%)"><span class="mono" style="color:var(--el)">${q}</span><h3 style="margin:.8rem 0">${t}</h3><p style="font-size:.95rem">${p}</p></div>`).join('')}
+      ${[['air', 'lune', 'Cercles de femmes', 'Chaque lune nouvelle', 'Parole, chant et tambour, pour déposer ce qui s\'achève et semer une intention. 2 h 30, 30 €.'],
+         ['feu', 'saisons', 'Cérémonies des saisons', 'Solstices & équinoxes', 'Quatre fois par an, un rituel collectif pour accompagner le passage d\'une saison à l\'autre.'],
+         ['terre', 'voix', 'Stages d\'une journée', 'Voix · voyage au tambour', 'Pour apprendre, expérimenter et repartir avec une pratique à poursuivre chez soi.'],
+         ['eau', 'bol', 'Bains collectifs', 'Un samedi par mois', 'Deux heures allongé·e, en petit groupe de 6, au milieu des bols et du gong. 25 €.']]
+        .map(([el, i, t, q, p], k) => `<div class="rv" data-d="${k + 1}" data-el="${el}" style="padding:2rem;border:1px solid var(--trait);border-radius:4px;background:radial-gradient(ellipse at 100% 0%,color-mix(in srgb,var(--el) 14%,transparent),transparent 60%)">${ico(i, 'carte-ico')}<span class="mono" style="color:var(--el)">${q}</span><h3 style="margin:.8rem 0">${t}</h3><p style="font-size:.95rem">${p}</p></div>`).join('')}
       </div></div></section>`
   + `<section class="sect" style="background:var(--humus)"><div class="wrap deux deux-c">
       <div><span class="lbl rv">Bientôt</span><h2 class="rv" data-d="1">Un lieu d'accueil <em>prend forme.</em></h2>
@@ -642,7 +647,7 @@ function pageStage(id) {
         <span class="mono" style="color:var(--el)">${t.nom}</span>
         <div class="e-prix" style="margin-top:1rem">${euros(e.prix)}</div>
         ${e.acompte ? `<p style="font-size:.88rem;margin-top:.4rem">Acompte de ${euros(e.acompte)} à la réservation</p>` : ''}
-        <dl><dt>Date</dt><dd>${dateLongue(e.date)}</dd><dt>Horaires</dt><dd>${heure(e.debut)} – ${heure(e.fin)}</dd><dt>Lieu</dt><dd>${e.lieu}</dd><dt>Groupe</dt><dd>${e.places} personnes maximum</dd></dl>
+        <dl class="dl-ico">${[['calendrier', 'Date', dateLongue(e.date)], ['horaire', 'Horaires', `${heure(e.debut)} – ${heure(e.fin)}`], ['lieu', 'Lieu', e.lieu], ['groupe', 'Groupe', `${e.places} personnes maximum`]].map(([i, k, v]) => `${ico(i)}<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>
         ${passe ? '<p>Cette date est passée.</p>' : `<button class="btn btn-el btn-block" data-resa-evt="${e.id}">Je réserve ma place</button>`}
         <a class="btn btn-ghost btn-block" style="margin-top:.6rem" href="#/carte-cadeau/libre">Offrir ce moment</a>
         <p style="font-size:.8rem;margin-top:1rem;color:var(--lin-3)">Une question avant de vous inscrire ? <a href="#/contact" style="color:var(--el)">Écrivez-moi</a>.</p>
@@ -700,8 +705,8 @@ function pageContact(sujet) {
       <div>
         <span class="lbl rv">Où & quand</span>
         <dl class="rv" data-d="1" style="display:grid;gap:1.5rem;margin-bottom:3rem">
-          <div><dt class="mono" style="color:var(--encre-2)">Lieu</dt><dd style="font-family:var(--f-titre);font-size:1.5rem;font-weight:300">${CONFIG.lieu}</dd></div>
-          <div><dt class="mono" style="color:var(--encre-2)">Réponse</dt><dd style="font-family:var(--f-titre);font-size:1.5rem;font-weight:300">${CONFIG.reponse}</dd></div>
+          <div class="contact-info">${ico('lieu')}<dt class="mono" style="color:var(--encre-2)">Lieu</dt><dd style="font-family:var(--f-titre);font-size:1.5rem;font-weight:300">${CONFIG.lieu}</dd></div>
+          <div class="contact-info">${ico('contact')}<dt class="mono" style="color:var(--encre-2)">Réponse</dt><dd style="font-family:var(--f-titre);font-size:1.5rem;font-weight:300">${CONFIG.reponse}</dd></div>
           ${CONFIG.telephone ? `<div><dt class="mono" style="color:var(--encre-2)">Téléphone</dt><dd style="font-family:var(--f-titre);font-size:1.5rem;font-weight:300"><a href="tel:${CONFIG.telephone.replace(/\s/g, '')}">${CONFIG.telephone}</a></dd></div>` : ''}
           ${CONFIG.email ? `<div><dt class="mono" style="color:var(--encre-2)">Email</dt><dd style="font-family:var(--f-titre);font-size:1.5rem;font-weight:300"><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></dd></div>` : ''}
         </dl>
@@ -789,7 +794,7 @@ function afficherEtape() {
     html = `<h2>Quel soin <em>vous appelle ?</em></h2><p class="sous">Choisissez, puis votre créneau. Je confirme personnellement chaque rendez-vous.</p>
       <div class="choix">${PRESTATIONS.filter(x => x.mode !== 'devis').map(x => `
         <button class="opt" data-el="${x.element}" data-p="${x.id}" aria-pressed="${x.id === s.prestaId}">
-          <span class="pastille"></span><span><b>${x.nom}</b><small>${x.duree} · ${x.accroche}</small></span><span class="o-prix">${euros(x.prix)}${x.unite || ''}</span></button>`).join('')}
+          ${ico(x.icone, 'opt-ico')}<span><b>${x.nom}</b><small>${x.duree} · ${x.accroche}</small></span><span class="o-prix">${euros(x.prix)}${x.unite || ''}</span></button>`).join('')}
         <button class="opt opt-simple" data-p="structure"><span><b>Intervention en structure</b><small>Associations, crèches, EHPAD — sur devis</small></span></button></div>
       ${p && p.prix === 80 ? `<div class="cal-mois">Formule</div><div class="choix choix-2">${FORMULES.map(f => `<button class="opt opt-simple" data-f="${f.id}" aria-pressed="${f.id === s.formule}"><span><b>${f.nom} · ${euros(f.prix)}</b><small>${f.detail || 'une séance'}</small></span></button>`).join('')}</div>` : ''}
       <p class="note">Pas sûr·e ? <a href="#/" data-scroll-accueil="orientation">Le questionnaire d'orientation</a> vous aide à choisir en trois questions.</p>`;
@@ -940,7 +945,7 @@ function pageCadeau(pre) {
       </div>
       <form class="config-form" id="cc-form" novalidate>
         <div class="bloc"><h3><span>01</span>Ce que vous offrez</h3><div class="choix" id="cc-exp">${CADEAU.experiences.map(x => `
-          <button type="button" class="opt" data-el="${x.element}" data-exp="${x.id}" aria-pressed="${x.id === exp.id}"><span class="pastille"></span><span><b>${x.nom}</b></span><span class="o-prix">${x.prix ? euros(x.prix) : '—'}</span></button>`).join('')}</div>
+          <button type="button" class="opt" data-el="${x.element}" data-exp="${x.id}" aria-pressed="${x.id === exp.id}">${ico(x.icone, 'opt-ico')}<span><b>${x.nom}</b></span><span class="o-prix">${x.prix ? euros(x.prix) : '—'}</span></button>`).join('')}</div>
           <div class="champ" id="cc-libre" style="margin-top:1rem" ${exp.id === 'libre' ? '' : 'hidden'}><label for="cc-montant">Montant (dès 30 €)</label><input id="cc-montant" name="montant" type="number" min="30" step="5" value="50"></div></div>
         <div class="bloc"><h3><span>02</span>L'élément de la carte</h3><div class="theme-choix" id="cc-theme">${Object.entries(ELEMENTS).map(([k, v]) => `<button type="button" data-el="${k}" data-th="${k}" aria-pressed="${k === exp.element}" aria-label="${v.nom}" title="${v.nom}"></button>`).join('')}</div></div>
         <div class="bloc"><h3><span>03</span>Les mots</h3>
