@@ -203,6 +203,14 @@ strong{font-weight:400;color:var(--lin)}
 .porte .prix{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.14em;color:var(--lin-2)}
 .porte-ico{width:clamp(54px,5vw,72px);height:clamp(54px,5vw,72px);margin-bottom:1rem;transition:transform 1s var(--ease)}
 .porte:hover .porte-ico{transform:scale(1.08) rotate(-6deg)}
+/* largeur de texte fixe : les retours à la ligne ne changent plus pendant l'animation */
+.porte h3{width:4.2em;min-width:0}
+.porte .plus p{width:30ch;max-width:none}
+.porte .prix{white-space:nowrap}
+/* ouverture du texte : hauteur exacte, même durée et même courbe que l'élargissement de la porte */
+.porte .plus{display:grid;grid-template-rows:0fr;max-height:none;transition:grid-template-rows 1s var(--ease),opacity .35s}
+.porte .plus>div{overflow:hidden;min-height:0}
+.porte:hover .plus,.porte:focus-visible .plus{grid-template-rows:1fr;max-height:none;transition:grid-template-rows 1s var(--ease),opacity .6s .3s}
 .motif{position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.8}
 /* eau : ondes */
 .motif-eau::before,.motif-eau::after{content:"";position:absolute;left:50%;top:42%;width:40px;height:40px;margin:-20px;border:1px solid var(--eau);border-radius:50%;animation:onde 5s var(--ease) infinite;opacity:0}
@@ -552,7 +560,9 @@ strong{font-weight:400;color:var(--lin)}
   .ecoute,.tambour-grille,.sandrine,.cadeau-teaser,.deux,.fiche,.config{grid-template-columns:1fr}
   .portes{flex-direction:column;height:auto}
   .porte{min-height:300px;flex:none!important}
-  .porte .plus{max-height:none;opacity:1}
+  .porte .plus{max-height:none;opacity:1;grid-template-rows:1fr}
+  .porte h3{width:auto}
+  .porte .plus p{width:auto;max-width:36ch}
   .porte .num{display:none}
   .temoins{grid-template-columns:1fr}
   .grille-outils{grid-template-columns:1fr 1fr}
