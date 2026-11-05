@@ -19,7 +19,15 @@ Elles sont toutes dans `v2/media/`, converties en WebP. Le dossier passe de 1,9 
 | `fleur.webp` | IMG_20240403_143542 | Stage voix, contact, carte cadeau |
 | `portrait-1.webp`, `portrait-2.webp` | IMG_20200402_* | Qui suis-je, accueil |
 
-## 2. Ce qui est créé par le code (aucun fichier à fournir)
+## 2. Les icônes (style « sceau »)
+
+Le site utilise 28 icônes dessinées pour lui : chaque pictogramme est posé dans deux anneaux légèrement irréguliers, en écho aux ondes du son. Elles sont toutes dans un seul fichier, `assets/icones.svg`, et prennent la couleur de l'élément de la section (eau, feu, terre, souffle).
+
+Où elles apparaissent : les quatre portes de l'accueil, la ligne de chaque rencontre dans l'agenda, le résultat du questionnaire, les informations en tête de chaque page (durée, tarif, lieu, public), les six outils du soin chamanique, les quatre formats de rencontre, l'encart d'un stage, le choix du soin dans la réservation, le choix de la carte cadeau et la page contact.
+
+Pour modifier un dessin ou en ajouter un : éditer `outils/generer-icones.py`, puis lancer `python3 v2/outils/generer-icones.py v2/assets/icones.svg`. L'icône d'une prestation, d'une rencontre ou d'une carte cadeau se choisit dans `assets/data.js` (champ `icone`).
+
+## 3. Ce qui est créé par le code (aucun fichier à fournir)
 
 - **Champ de résonance** du héros : ondes dorées concentriques et spores qui montent.
 - **Racines** qui poussent au défilement derrière le manifeste. Elles sont générées autrement à chaque visite.
@@ -29,7 +37,7 @@ Elles sont toutes dans `v2/media/`, converties en WebP. Le dossier passe de 1,9 
 
 Ce choix allège le site et l'ancre dans une démarche artistique propre. Il comble aussi l'absence de vidéo et de son réels, mais il ne les remplace pas (point 3).
 
-## 3. Ce qui manque, par ordre d'impact
+## 4. Ce qui manque, par ordre d'impact
 
 ### A. À produire soi-même : rien ne peut le remplacer
 
