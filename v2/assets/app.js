@@ -34,7 +34,7 @@ async function envoyer(donnees) {
   if (modeMaquette()) { await attendre(1100); return { demo: true }; }
   const r = await fetch(CONFIG.formEndpoint, {
     method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-    body: JSON.stringify({ ...donnees, _replyto: donnees.email, _subject: `Racines et Résonances — ${donnees.objet}` })
+    body: JSON.stringify({ ...donnees, _replyto: donnees.email, _subject: `Racines & Résonances — ${donnees.objet}` })
   });
   if (!r.ok) throw new Error('envoi');
   return { demo: false };
@@ -176,8 +176,6 @@ const Champ = {
   cv: null, c: null, ondes: [], spores: [], vis: true, px: 0, py: 0, raf: 0, dernier: 0,
   monter(cv) {
     this.cv = cv; this.c = cv.getContext('2d'); this.ondes = [];
-    this.emb = document.getElementById('heros-embleme'); this.ox = this.oy = undefined;
-    this.emb?.addEventListener('animationend', e => { if (e.animationName === 'vibre') this.emb.classList.remove('vibre'); });
     const n = innerWidth < 700 ? 40 : 80;
     this.spores = Array.from({ length: n }, () => this.spore(true));
     this.taille(); addEventListener('resize', () => this.taille());
@@ -194,23 +192,18 @@ const Champ = {
     const r = devicePixelRatio > 1 ? 2 : 1, b = this.cv.getBoundingClientRect();
     this.cv.width = b.width * r; this.cv.height = b.height * r; this.c.setTransform(r, 0, 0, r, 0, 0);
     this.w = b.width; this.h = b.height;
-    if (this.emb) { const e = this.emb.getBoundingClientRect(); this.ox = e.left - b.left + e.width / 2; this.oy = e.top - b.top + e.height * .5; }
   },
-  pulse(f = 1) {
-    this.ondes.push({ r: this.emb ? this.emb.offsetWidth * .42 : 10, a: .55 * f, v: .11 + f * .05, w: 1 + f });
-    if (f >= 1 && this.emb && document.contains(this.emb)) { this.emb.classList.remove('vibre'); void this.emb.offsetWidth; this.emb.classList.add('vibre'); }
-  },
+  pulse(f = 1) { this.ondes.push({ r: 10, a: .55 * f, v: .11 + f * .05, w: 1 + f }); },
   dessiner(t, fixe) {
     const { c, w, h } = this, dt = Math.min(50, t - (this.dernier || t)); this.dernier = t;
     c.clearRect(0, 0, w, h);
-    if (this.emb) { const e = this.emb.getBoundingClientRect(), b = this.cv.getBoundingClientRect(); this.ox = e.left - b.left + e.width / 2; this.oy = e.top - b.top + e.height / 2; }
-    const cx = (this.ox ?? w / 2) + this.px * 30, cy = (this.oy ?? h * .56) + this.py * 20, aplat = this.emb ? 1 : .42;
+    const cx = w / 2 + this.px * 30, cy = h * .56 + this.py * 20;
     if (!fixe && (!this.prochaine || t > this.prochaine)) { this.pulse(.45); this.prochaine = t + 2800; }
-    if (fixe) [140, 240, 360, 500].forEach((r, i) => this.ondes.push({ r, a: .25 - i * .05, v: 0, w: 1 }));
+    if (fixe) [120, 220, 340, 480].forEach((r, i) => this.ondes.push({ r, a: .25 - i * .05, v: 0, w: 1 }));
     this.ondes = this.ondes.filter(o => o.a > .01);
     for (const o of this.ondes) {
       o.r += o.v * dt; o.a *= Math.pow(.9965, dt / 4);
-      c.beginPath(); c.ellipse(cx, cy, o.r, o.r * aplat, 0, 0, Math.PI * 2);
+      c.beginPath(); c.ellipse(cx, cy, o.r, o.r * .42, 0, 0, Math.PI * 2);
       c.strokeStyle = `rgba(217,174,74,${o.a})`; c.lineWidth = o.w; c.stroke();
     }
     for (const s of this.spores) {
@@ -916,7 +909,7 @@ async function envoyerResa(b) {
 }
 
 function merciHTML(titre, texte, demo) {
-  return `<div class="merci"><div class="anneau"><i></i><i></i><i></i><span class="embleme"></span></div><h2>${titre}</h2><p>${texte}</p>
+  return `<div class="merci"><div class="anneau"><i></i><i></i><i></i><b></b></div><h2>${titre}</h2><p>${texte}</p>
     ${demo ? '<div class="demo">Mode maquette — aucune donnée n\'a été envoyée.<br>Brancher un formulaire (CONFIG.formEndpoint dans data.js) pour recevoir les demandes.</div>' : ''}</div>`;
 }
 
@@ -939,7 +932,7 @@ function pageCadeau(pre) {
   + `<section class="sect clair"><div class="wrap config">
       <div class="config-apercu rv">
         <div class="carte" id="cc-carte" data-el="${exp.element}" data-tilt>
-          <div class="c-haut"><span class="c-logo" aria-label="Racines et Résonances"><span class="embleme"></span><span class="nom-logo"></span></span><span class="c-tag">Carte cadeau</span></div>
+          <div class="c-haut"><span class="c-logo">Racines <i>&</i> Résonances</span><span class="c-tag">Carte cadeau</span></div>
           <div><div class="c-titre" id="cc-titre"></div><div class="c-msg" id="cc-msg"></div></div>
           <div class="c-bas"><span id="cc-noms"></span><b id="cc-prix"></b></div>
         </div>
@@ -1014,7 +1007,7 @@ function apresCadeau(r) {
 
 /* ═══ 8. ROUTEUR & DÉMARRAGE ═══════════════════════════════════ */
 const ROUTES = {
-  '':                  [pageAccueil, apresAccueil, 'Racines et Résonances — Sandrine · Soins sonores & chamaniques'],
+  '':                  [pageAccueil, apresAccueil, 'Racines & Résonances — Sandrine · Soins sonores & chamaniques'],
   'soins-sonores':     [pageSonores, null, 'Bains & massages sonores'],
   'soins-chamaniques': [pageChamaniques, null, 'Soins chamaniques & énergétiques'],
   'journee-duo':       [pageDuo, apresDuo, 'La Journée Duo'],
@@ -1039,7 +1032,7 @@ function router() {
   decouperMots(main); braises(main); apparitions(main); parallaxe(main); deroules(main); inclinaison(main);
   apres?.(main);
   const ev = nom === 'stage' && EVTS.find(e => e.id === arg);
-  document.title = ev ? `${ev.titre} — Racines et Résonances` : (nom ? `${titre} — Racines et Résonances` : titre);
+  document.title = ev ? `${ev.titre} — Racines & Résonances` : (nom ? `${titre} — Racines & Résonances` : titre);
   $$('.nav-liens a').forEach(a => a.toggleAttribute('aria-current', a.getAttribute('href') === '#/' + nom));
   fermerMenu(); fermerTiroir();
   scrollTo({ top: 0, behavior: 'instant' });

@@ -19,21 +19,7 @@ Elles sont toutes dans `v2/media/`, converties en WebP. Le dossier passe de 1,9 
 | `fleur.webp` | IMG_20240403_143542 | Stage voix, contact, carte cadeau |
 | `portrait-1.webp`, `portrait-2.webp` | IMG_20200402_* | Qui suis-je, accueil |
 
-## 2. Le logo
-
-À partir de l'image du logo fournie, deux fichiers vectoriels sont tracés dans `v2/media/logo/` : `embleme.svg` (les anneaux et l'arbre-racines) et `nom.svg` (le nom, dans sa typographie d'origine). Ils prennent la couleur du texte autour d'eux, ce qui permet de les afficher sans perte à toutes les tailles :
-- en or sur fond sombre (navigation, héros, pied de page, filigrane de la phrase finale) ;
-- dans la couleur de l'élément sur la carte cadeau ;
-- dans le brun-rouge d'origine (`--brique`, `#6E2B11`) sur l'écran de confirmation.
-
-Dans le héros, l'emblème est démesuré, sans cadre : décalé à gauche, il déborde de l'écran en haut, en bas et sur le côté, si bien qu'on en devine la forme plus qu'on ne la voit en entier. Ses bords s'estompent sous la navigation et vers le texte, pour rester lisibles. Il éclot depuis son centre puis respire lentement, les ondes dorées partent de lui, et il vibre quand on fait sonner le gong ou qu'on entre en écoute. À droite, le nom du logo est le titre principal de la page.
-
-- `icone-32.png` et `icone-180.png` : l'emblème seul, sur le fond crème du logo, pour l'onglet du navigateur et l'écran d'accueil des téléphones (le nom serait illisible à cette taille).
-- `icone-512.png` : le logo complet, utilisé comme image d'aperçu lors d'un partage du lien.
-
-Le nom s'écrit partout « Racines **et** Résonances », comme sur le logo.
-
-## 3. Ce qui est créé par le code (aucun fichier à fournir)
+## 2. Ce qui est créé par le code (aucun fichier à fournir)
 
 - **Champ de résonance** du héros : ondes dorées concentriques et spores qui montent.
 - **Racines** qui poussent au défilement derrière le manifeste. Elles sont générées autrement à chaque visite.
@@ -43,7 +29,7 @@ Le nom s'écrit partout « Racines **et** Résonances », comme sur le logo.
 
 Ce choix allège le site et l'ancre dans une démarche artistique propre. Il comble aussi l'absence de vidéo et de son réels, mais il ne les remplace pas (point 3).
 
-## 4. Ce qui manque, par ordre d’impact
+## 3. Ce qui manque, par ordre d'impact
 
 ### A. À produire soi-même : rien ne peut le remplacer
 
