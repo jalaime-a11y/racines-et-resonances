@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Racines & Résonances — Sandrine · Soins sonores & chamaniques</title>
+<meta name="description" content="Bains sonores, soins chamaniques, Journée Duo, cercles de femmes et stages avec Sandrine, en Sud-Essonne près de Dourdan.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F5E9D7">
+<meta property="og:title" content="Racines & Résonances">
+<meta property="og:description" content="Un tambour, un souffle, une vibration — pour revenir à vous.">
+<meta property="og:image" content="media/ponton.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300&family=Karla:wght@300;400&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="media/ponton.webp">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+
+<!-- ── NAVIGATION ─────────────────────────────────────────── -->
+<header class="nav" id="nav">
+  <a class="logo" href="#/">Racines <i>&amp;</i> Résonances</a>
+  <ul class="nav-liens">
+    <li><a href="#/soins-sonores">Bains sonores</a></li>
+    <li><a href="#/soins-chamaniques">Soins chamaniques</a></li>
+    <li><a href="#/journee-duo">Journée Duo</a></li>
+    <li><a href="#/stages">Cercles & stages</a></li>
+    <li><a href="#/qui">Sandrine</a></li>
+    <li><a href="#/carte-cadeau">Offrir</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="son" id="btn-son" aria-pressed="false" title="Activer l'ambiance sonore">
+      <span class="barres" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="txt">Écoute</span><span class="sr">Ambiance sonore</span>
+    </button>
+    <button class="btn btn-sm btn-resa" data-resa>Réserver</button>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="menu"><span></span><span></span><span class="sr">Menu</span></button>
+  </div>
+</header>
+
+<nav class="menu" id="menu" aria-label="Menu principal">
+  <a href="#/soins-sonores"><small>01 · Eau</small>Bains sonores</a>
+  <a href="#/soins-chamaniques"><small>02 · Feu</small>Soins chamaniques</a>
+  <a href="#/journee-duo"><small>03 · Terre</small>Journée Duo</a>
+  <a href="#/stages"><small>04 · Souffle</small>Cercles & stages</a>
+  <a href="#/qui"><small>✦</small>Qui suis-je</a>
+  <a href="#/carte-cadeau"><small>✦</small>Offrir</a>
+  <a href="#/contact"><small>✦</small>Contact</a>
+  <div class="menu-pied">
+    <button class="btn" data-resa>Réserver un soin</button>
+  </div>
+</nav>
+
+<main id="contenu" tabindex="-1"></main>
+
+<!-- ── PIED DE PAGE ───────────────────────────────────────── -->
+<footer class="pied">
+  <div class="wrap">
+    <div class="pied-grille">
+      <div>
+        <a class="logo" href="#/">Racines <i>&amp;</i> Résonances</a>
+        <p style="margin-top:1rem;font-size:.92rem">Pratiques chamaniques & sonores avec Sandrine.<br>Sud-Essonne · Dourdan et alentours.</p>
+      </div>
+      <div><h4>Les soins</h4><ul>
+        <li><a href="#/soins-sonores">Bains & massages sonores</a></li>
+        <li><a href="#/soins-chamaniques">Soins chamaniques</a></li>
+        <li><a href="#/journee-duo">Journée Duo</a></li>
+        <li><a href="#/contact/structure">En structure</a></li></ul></div>
+      <div><h4>Ensemble</h4><ul>
+        <li><a href="#/stages">Agenda</a></li>
+        <li><a href="#/stages">Cercles de femmes</a></li>
+        <li><a href="#/stages">Cérémonies des saisons</a></li>
+        <li><a href="#/carte-cadeau">Carte cadeau</a></li></ul></div>
+      <div><h4>Sandrine</h4><ul>
+        <li><a href="#/qui">Mon parcours</a></li>
+        <li><a href="#/contact">Contact</a></li>
+        <li><a href="#/mentions">Mentions & précautions</a></li>
+        <li><a href="../">Version actuelle du site</a></li></ul></div>
+    </div>
+    <div class="bas"><span>© 2026 Racines et Résonances · Sandrine</span><span>Tu es aimée · tu es soutenue · tout est possible</span></div>
+  </div>
+</footer>
+
+<!-- barre d'action mobile -->
+<div class="barre-mobile" id="barre-mobile">
+  <button class="btn" data-resa>Réserver</button>
+  <a class="btn btn-ghost" href="#/carte-cadeau">Offrir</a>
+</div>
+
+<!-- tiroir de réservation -->
+<div class="voile" id="voile"></div>
+<aside class="tiroir" id="tiroir" role="dialog" aria-modal="true" aria-labelledby="t-titre" aria-hidden="true">
+  <div class="t-tete"><span class="mono" id="t-titre">Réserver</span><button class="t-fermer" id="t-fermer" aria-label="Fermer">×</button></div>
+  <div class="t-prog" id="t-prog"></div>
+  <div class="t-corps" id="t-corps"></div>
+  <div class="t-pied" id="t-pied"></div>
+</aside>
+
+<!-- ══════════════════════════════════════════════════════════
+     ACCUEIL (gabarit)
+══════════════════════════════════════════════════════════ -->
+<template id="tpl-accueil">
+
+  <!-- HÉROS : le seuil, la brume, le champ de résonance -->
+  <section class="heros" data-onde>
+    <div class="heros-img" aria-hidden="true"></div>
+    <div class="brume" aria-hidden="true"></div>
+    <canvas id="champ" aria-hidden="true"></canvas>
+    <div class="heros-contenu">
+      <p class="sur rv">Pratiques chamaniques & sonores · Sud-Essonne</p>
+      <h1 class="mots" data-mots>Racines <span class="l2">& Résonances</span></h1>
+      <p class="accroche rv" data-d="3">Un tambour, un souffle, une vibration — pour revenir à vous quand la vie s'est figée.</p>
+      <div class="heros-ctas rv" data-d="4">
+        <button class="btn" data-resa>Réserver un soin</button>
+        <button class="btn btn-ghost" data-son-entree>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/></svg>
+          Entrer en écoute
+        </button>
+      </div>
+    </div>
+    <a class="defiler" href="#/" data-scroll="seuil"><span>Passer le seuil</span><i></i></a>
+  </section>
+
+  <!-- LE SEUIL : manifeste qui s'éclaire au défilement, racines qui poussent -->
+  <section class="seuil" id="seuil">
+    <div class="seuil-scene">
+      <svg class="seuil-racines" id="racines" preserveAspectRatio="xMidYMin slice" aria-hidden="true"></svg>
+      <div class="seuil-texte">
+        <p>
+          <span class="ligne">Il y a des moments où la vie se fige.</span>
+          <span class="ligne">On ne sait plus très bien qui l'on est,</span>
+          <span class="ligne">ni par où passer.</span>
+          <span class="ligne">Alors on s'arrête au bord de l'eau.</span>
+          <span class="ligne">On écoute un tambour battre comme un cœur,</span>
+          <span class="ligne">et quelque chose, très loin dedans, <em>se souvient</em>.</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LES QUATRE PORTES -->
+  <section class="sect" id="portes">
+    <div class="wrap">
+      <div class="portes-tete">
+        <div>
+          <span class="lbl rv">Quatre portes, une même présence</span>
+          <h2 class="rv" data-d="1">Par où <em>voulez-vous</em><br>entrer ?</h2>
+        </div>
+        <button class="lien rv" data-d="2" data-scroll="orientation">Je ne sais pas encore — aidez-moi à choisir ↓</button>
+      </div>
+      <div class="portes rv" data-d="2">
+        <a class="porte" data-el="eau" href="#/soins-sonores">
+          <div class="fond" style="background-image:url(media/bols-bougies.webp)"></div>
+          <div class="motif motif-eau"></div>
+          <span class="num">01</span>
+          <svg class="ico porte-ico" aria-hidden="true"><use href="assets/icones.svg#eau"/></svg>
+          <span class="elnom">Eau</span>
+          <h3>Bains sonores</h3>
+          <div class="plus"><p>Allongé·e au milieu des bols et des gongs, vous n'avez rien à faire. La vibration fait le chemin.</p><span class="prix">1 h 15 · 80 € — collectif 25 €</span></div>
+        </a>
+        <a class="porte" data-el="feu" href="#/soins-chamaniques">
+          <div class="fond" style="background-image:url(media/tambour-hochet.webp)"></div>
+          <div class="motif motif-feu" data-braises></div>
+          <span class="num">02</span>
+          <svg class="ico porte-ico" aria-hidden="true"><use href="assets/icones.svg#feu"/></svg>
+          <span class="elnom">Feu</span>
+          <h3>Soins chamaniques</h3>
+          <div class="plus"><p>Le tambour ouvre la porte vers ce qui demande à guérir. Chaque soin naît dans l'instant.</p><span class="prix">1 h 15 · 80 €</span></div>
+        </a>
+        <a class="porte" data-el="terre" href="#/journee-duo">
+          <div class="fond" style="background-image:url(media/espace-soin.webp)"></div>
+          <div class="motif motif-terre"></div>
+          <span class="num">03</span>
+          <svg class="ico porte-ico" aria-hidden="true"><use href="assets/icones.svg#terre"/></svg>
+          <span class="elnom">Terre</span>
+          <h3>Journée Duo</h3>
+          <div class="plus"><p>Une journée entière à deux, entre amies, de 10 h à 17 h. Rituels, forêt, tambour et silence.</p><span class="prix">350 € le duo</span></div>
+        </a>
+        <a class="porte" data-el="air" href="#/stages">
+          <div class="fond" style="background-image:url(media/plumes-herbe.webp)"></div>
+          <div class="motif motif-air"></div>
+          <span class="num">04</span>
+          <svg class="ico porte-ico" aria-hidden="true"><use href="assets/icones.svg#souffle"/></svg>
+          <span class="elnom">Souffle</span>
+          <h3>Cercles & stages</h3>
+          <div class="plus"><p>Cercles de femmes à la lune nouvelle, cérémonies des saisons, stages de voix et de voyage au tambour.</p><span class="prix">dès 30 €</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÉCOUTER : le gong qu'on touche -->
+  <section class="sect" data-el="eau" style="background:radial-gradient(ellipse 60% 70% at 25% 50%,rgba(91,183,198,.08),transparent 70%)">
+    <div class="wrap ecoute">
+      <div class="gong-zone rv">
+        <button class="gong" id="gong" aria-label="Faire sonner le gong">
+          <img src="media/gong-venus.webp" alt="Gong planétaire orné du symbole de Vénus" width="568" height="568" loading="lazy">
+        </button>
+        <span class="gong-invite">Touchez le gong</span>
+      </div>
+      <div>
+        <span class="lbl rv">Écoutez</span>
+        <h2 class="rv" data-d="1">Posez la main<br><em>sur le gong.</em></h2>
+        <p class="rv" data-d="2" style="margin:1.6rem 0">Ce que vous entendez n'est qu'un écho. En séance, la vibration ne passe pas seulement par les oreilles : elle traverse le corps entier, de la peau jusqu'aux os, et le mental finit par se taire.</p>
+        <p class="rv" data-d="2" style="margin-bottom:2.2rem;font-size:.85rem;color:var(--lin-3)">Montez le son. L'écho est recréé dans votre navigateur ; en séance, ce sont les vrais bols, cristaux et gongs.</p>
+        <div class="rv" data-d="3" style="display:flex;gap:.8rem;flex-wrap:wrap">
+          <button class="btn btn-el" data-resa="bain-individuel">Réserver un bain sonore</button>
+          <a class="btn btn-ghost" href="#/soins-sonores">Comment se passe une séance</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LE TAMBOUR : battement -->
+  <section class="sect tambour-sect au-repos" data-el="feu" id="tambour">
+    <div class="wrap tambour-grille">
+      <div>
+        <span class="lbl rv">Le tambour</span>
+        <h2 class="rv" data-d="1">Un battement<br>pour <em>ouvrir la porte.</em></h2>
+        <p class="rv" data-d="2" style="margin:1.6rem 0">Tout a commencé par un tambour. Un jour, j'ai entendu celui d'une chamane nord-américaine, et quelque chose s'est réveillé en moi — « comme une connaissance profonde, déjà là ».</p>
+        <p class="rv" data-d="2" style="margin-bottom:2.2rem">Aujourd'hui, c'est lui qui ouvre chaque soin. Son rythme régulier apaise le mental et ouvre un passage vers ce qui demande à guérir.</p>
+        <div class="rv" data-d="3" style="display:flex;gap:.8rem;flex-wrap:wrap">
+          <button class="btn btn-el" id="btn-tambour" aria-pressed="false">Écouter le tambour</button>
+          <a class="btn btn-ghost" href="#/soins-chamaniques">Découvrir les soins</a>
+        </div>
+      </div>
+      <div class="tambour-visuel rv" data-d="1">
+        <img src="media/tambour-hochet.webp" alt="Tambour chamanique, hochet et plume" data-px="-.08" loading="lazy">
+        <span class="battement"></span><span class="battement b2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIENTATION -->
+  <section class="sect" id="orientation">
+    <div class="wrap">
+      <div class="quiz" id="quiz"></div>
+    </div>
+  </section>
+
+  <!-- AGENDA -->
+  <section class="sect clair">
+    <div class="wrap">
+      <div class="portes-tete">
+        <div><span class="lbl rv">Agenda</span><h2 class="rv" data-d="1">Les prochains <em style="color:var(--or-sombre)">cercles</em><br>& stages</h2></div>
+        <a class="btn btn-ghost rv" href="#/stages">Tout l'agenda</a>
+      </div>
+      <div class="agenda rv" data-d="2" id="agenda-accueil"></div>
+    </div>
+  </section>
+
+  <!-- SANDRINE -->
+  <section class="sect">
+    <div class="wrap sandrine">
+      <div class="portrait rv"><img src="media/portrait-2.webp" alt="Portrait de Sandrine" loading="lazy" data-px="-.05"></div>
+      <div>
+        <span class="lbl rv">Qui suis-je</span>
+        <h2 class="rv" data-d="1">Sandrine,<br><em>passeuse</em> de vibrations.</h2>
+        <p class="rv" data-d="2" style="margin:1.6rem 0">Je ne me rattache à aucune école ni tradition unique. J'ai reçu les transmissions de plusieurs femmes-médecine — péruvienne, népalaise, mongole — et j'écoute aujourd'hui ma propre guidance pour créer, avec chaque personne, les rituels qui lui correspondent vraiment.</p>
+        <blockquote class="citation rv" data-d="2" style="font-size:clamp(1.15rem,2vw,1.6rem)">« Je ne prends jamais le pouvoir sur le chemin de quelqu'un. Je le facilite. »</blockquote>
+        <div class="mots-cles rv" data-d="3"><span>Chaleureuse</span><span>À l'écoute</span><span>Résiliente</span></div>
+        <a class="lien rv" data-d="3" href="#/qui">Mon parcours →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFRIR -->
+  <section class="sect" style="background:linear-gradient(to bottom,var(--nuit),var(--ecorce) 60%,var(--nuit))">
+    <div class="wrap cadeau-teaser">
+      <div class="carte-pile rv">
+        <div class="carte" data-el="eau" data-tilt>
+          <div class="c-haut"><span class="c-logo">Racines <i>&</i> Résonances</span><span class="c-tag">Carte cadeau</span></div>
+          <div><div class="c-titre">Un bain sonore<br>rien que pour toi</div><div class="c-msg">« Pour que tu prennes enfin le temps de te poser. »</div></div>
+          <div class="c-bas"><span>Pour Claire<br>de la part de Léa</span><b>80 €</b></div>
+        </div>
+        <div class="carte" data-el="feu"></div>
+        <div class="carte" data-el="terre"></div>
+      </div>
+      <div>
+        <span class="lbl rv">Offrir</span>
+        <h2 class="rv" data-d="1">Offrir<br><em>une résonance.</em></h2>
+        <p class="rv" data-d="2" style="margin:1.6rem 0 2.2rem">Un bain sonore, un soin, une Journée Duo ou une place dans un cercle. En e-carte immédiate, ou imprimée sur papier ensemencé : une fois utilisée, on la plante, et elle fleurit.</p>
+        <a class="btn rv" data-d="3" href="#/carte-cadeau">Composer une carte cadeau</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="sect-sm">
+    <div class="wrap">
+      <span class="lbl rv">Ce qu'elles et ils ont vécu</span>
+      <div class="temoins" id="temoins" style="margin-top:1.5rem"></div>
+    </div>
+  </section>
+
+  <!-- FINALE -->
+  <section class="finale" data-onde>
+    <div class="wrap">
+      <h2 class="mots" data-mots>Tu es aimée. Tu es soutenue. <em>Tout est possible.</em></h2>
+      <div class="rv" style="display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;position:relative">
+        <button class="btn" data-resa>Réserver un soin</button>
+        <a class="btn btn-ghost" href="#/contact">Écrire à Sandrine</a>
+      </div>
+      <form class="lettre rv" data-d="2" data-lettre>
+        <label class="sr" for="lettre-email">Votre email</label>
+        <input id="lettre-email" type="email" required placeholder="Votre email — pour la Lettre des saisons">
+        <button class="btn btn-ghost" type="submit">S'inscrire</button>
+      </form>
+      <p class="lettre-note rv" data-d="2">Une lettre à chaque solstice et équinoxe : les dates des cercles et une pratique à faire chez soi. Rien d'autre.</p>
+    </div>
+  </section>
+</template>
+
+<script src="assets/data.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
