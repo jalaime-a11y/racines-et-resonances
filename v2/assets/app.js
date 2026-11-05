@@ -344,10 +344,10 @@ function braises(racine) {
   $$('.motif-air', racine).forEach(m => {
     const rafales = Array.from({ length: 7 }, (_, k) => {
       const y = 40 + k * 46 + Math.random() * 20, h = 10 + Math.random() * 14;
-      return `<path class="rafale" pathLength="1" d="M-40 ${y} C 40 ${y - h}, 110 ${y + h}, 180 ${y} S 260 ${y - h} 300 ${y - 4} c 18 -3 24 -20 10 -26 c -10 -4 -18 6 -11 12" style="animation-duration:${3.2 + Math.random() * 2.6}s;animation-delay:${-Math.random() * 5}s"/>`;
+      return `<path class="rafale" pathLength="1" d="M-40 ${y} C 40 ${y - h}, 110 ${y + h}, 180 ${y} S 260 ${y - h} 300 ${y - 4} c 18 -3 24 -20 10 -26 c -10 -4 -18 6 -11 12" style="animation-duration:${6 + Math.random() * 3.5}s;animation-delay:${-Math.random() * 9}s"/>`;
     }).join('');
     const plume = '<svg viewBox="0 0 48 48"><path d="M39 7C23 9 13 21 12.6 35.4L8 41"/><path d="M39 7c-1.8 14.6-12 24.6-26.4 28.4"/><path d="M17.4 30.4l7.2-.8M21.4 24.2l8-1M25.6 18.2l7.8-1.2"/></svg>';
-    const plumes = [0, 1, 2].map(k => `<span class="plume-vol" style="top:${18 + k * 24}%;animation-duration:${9 + k * 2.5}s;animation-delay:${-k * 3.4}s">${plume}</span>`).join('');
+    const plumes = [0, 1, 2].map(k => `<span class="plume-vol" style="top:${18 + k * 24}%;animation-duration:${15 + k * 3.5}s;animation-delay:${-k * 6}s">${plume}</span>`).join('');
     m.innerHTML = `<svg class="vent" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">${rafales}</svg>${plumes}`;
     const maj = () => m.style.setProperty('--w', m.offsetWidth + 'px'); maj(); addEventListener('resize', maj);
   });
