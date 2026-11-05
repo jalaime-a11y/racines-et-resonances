@@ -18,6 +18,10 @@ Toutes les couleurs sont des variables en tête de `assets/style.css` (bloc `:ro
 | Accent clair (ocre jaune) | `#E8B04B` |
 | Eau / Feu / Terre / Souffle | `#2E7A80` / `#B4482A` / `#8A5A2B` / `#7E5F8F` |
 
+**Règle d'harmonie.** On n'empile jamais deux couleurs de la même famille : sur un aplat chaud (Sienne, terre), l'accent est froid (bleu-vert clair) ; sur un aplat froid (bleu-vert, mauve), l'accent est chaud (ocre jaune). La carte « vedette » des tarifs prend la couleur opposée à celle de la page. L'ocre jaune sert de fil lumineux commun.
+
+**Les quatre portes de l'accueil** sont des arches claires : la photo dans une arche, le texte sur la crème. Chaque élément a son animation : ondes (eau), braises (feu), racines qui poussent (terre), rafales et plumes emportées (souffle).
+
 Les zones posées sur une photo ou un aplat foncé (en-têtes de page, portes, section du tambour, phrase finale, carte cadeau, outils du soin) repassent automatiquement en texte clair, avec des versions plus lumineuses des couleurs des éléments. Le sélecteur qui les regroupe est juste sous le bloc `:root`.
 
 - `CONTENUS-A-VALIDER.md` liste tout ce qui a été proposé : prix, dates, stages, conditions.
